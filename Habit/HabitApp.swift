@@ -12,6 +12,7 @@ struct HabitApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
     }
 }
