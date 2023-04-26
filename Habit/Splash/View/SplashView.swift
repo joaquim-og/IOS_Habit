@@ -9,24 +9,28 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @State var state: SplashUistate = .loading
+    @ObservedObject var viewModel: SplashViewModel
     
     var body: some View {
-        switch state {
-        case .loading:
-            loadingView()
-        case .goToSignScreen:
-            Text("load login")
-        case .goToHomeScreen:
-            Text("load home")
-        case .error(let errorMsg):
-            Text("error \(errorMsg)")
+        Group{
+            switch viewModel.uiState {
+            case .loading:
+                loadingView()
+            case .goToSignScreen:
+                Text("load login")
+            case .goToHomeScreen:
+                Text("load home")
+            case .error(let errorMsg):
+                loadingView(error: errorMsg)
+            }
+        }.onAppear {
+            viewModel.onAppear()
         }
     }
 }
 
 extension SplashView {
-    func loadingView() -> some View {
+    func loadingView(error: String? = nil) -> some View {
         ZStack {
             Image("logo")
                 .resizable()
@@ -35,13 +39,25 @@ extension SplashView {
                 .padding(20)
                 .background(Color.white)
                 .ignoresSafeArea()
+            
+            if let error = error {
+                Text("").alert(isPresented: .constant(true)) {
+                    Alert(title: Text("Habit"),
+                          message: Text(error),
+                          dismissButton: .default(Text("ok")) {}
+                    )
+                }
+            }
+            
         }
     }
 }
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        SplashView()
+        let viewModel = SplashViewModel()
+        
+        SplashView(viewModel: viewModel)
     }
 }
 
