@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CC2AD49CC300144C0F /* SignInView.swift */; };
+		3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */; };
+		3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */; };
 		3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431445829CBAD3500AA31D5 /* HabitApp.swift */; };
 		3431445D29CBAD3600AA31D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3431445C29CBAD3600AA31D5 /* Assets.xcassets */; };
 		3431446029CBAD3600AA31D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3431445F29CBAD3600AA31D5 /* Preview Assets.xcassets */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3414D6CC2AD49CC300144C0F /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewRouter.swift; sourceTree = "<group>"; };
 		3431445529CBAD3500AA31D5 /* Habit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3431445829CBAD3500AA31D5 /* HabitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitApp.swift; sourceTree = "<group>"; };
 		3431445C29CBAD3600AA31D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,6 +42,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3414D6C82AD49C6A00144C0F /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				3414D6CB2AD49C9A00144C0F /* View */,
+				3414D6CA2AD49C9400144C0F /* Model */,
+				3414D6C92AD49C7B00144C0F /* ViewModel */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		3414D6C92AD49C7B00144C0F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3414D6CA2AD49C9400144C0F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3414D6CB2AD49C9A00144C0F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3414D6CC2AD49CC300144C0F /* SignInView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3431444C29CBAD3500AA31D5 = {
 			isa = PBXGroup;
 			children = (
@@ -55,6 +94,7 @@
 		3431445729CBAD3500AA31D5 /* Habit */ = {
 			isa = PBXGroup;
 			children = (
+				3414D6C82AD49C6A00144C0F /* SignIn */,
 				3431446729CBB25000AA31D5 /* Splash */,
 				3431445829CBAD3500AA31D5 /* HabitApp.swift */,
 				3431445C29CBAD3600AA31D5 /* Assets.xcassets */,
@@ -101,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				34B81D8C29F9E5C90054E838 /* SplashViewModel.swift */,
+				3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -178,6 +219,9 @@
 				3431446B29CBB29000AA31D5 /* SplashView.swift in Sources */,
 				3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */,
 				3431446D29CBB33D00AA31D5 /* SplashUiState.swift in Sources */,
+				3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */,
+				3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */,
+				3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */,
 				34B81D8D29F9E5C90054E838 /* SplashViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

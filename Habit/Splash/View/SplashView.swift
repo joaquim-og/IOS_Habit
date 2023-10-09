@@ -10,14 +10,14 @@ import SwiftUI
 struct SplashView: View {
     
     @ObservedObject var viewModel: SplashViewModel
-    
+        
     var body: some View {
         Group{
             switch viewModel.uiState {
             case .loading:
                 loadingView()
             case .goToSignScreen:
-                Text("load login")
+                viewModel.signInView()
             case .goToHomeScreen:
                 Text("load home")
             case .error(let errorMsg):

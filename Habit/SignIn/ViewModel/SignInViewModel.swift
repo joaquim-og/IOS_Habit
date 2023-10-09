@@ -7,6 +7,6 @@
 
 import Foundation
 
-class SiginViewModel: ObservableObject {
+class SignInViewModel: ObservableObject {
     
 }
