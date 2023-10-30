@@ -12,7 +12,6 @@ class SplashViewModel: ObservableObject {
     @Published var uiState: SplashUistate = .loading
 
     func onAppear() {
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.uiState = .goToSignScreen
         }
