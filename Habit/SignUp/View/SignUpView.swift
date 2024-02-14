@@ -18,6 +18,7 @@ struct SignUpView: View {
     @State var document = ""
     @State var phone = ""
     @State var birthday = ""
+    @State var gender = Gender.male
     
     var body: some View {
         ZStack{
@@ -38,6 +39,7 @@ struct SignUpView: View {
                                 documentField
                                 phoneField
                                 birthdayField
+                                genderField
                                 savebutton
                             }
                         )
@@ -45,6 +47,10 @@ struct SignUpView: View {
                     }
                 ).padding(.horizontal, 8)
             }.padding()
+            
+            if case SignUpUiState.error(let error) = viewModel.uiState {
+                HabitErrorAlertComponent(error: error)
+            }
         }
     }
 }
@@ -101,14 +107,25 @@ extension SignUpView {
 }
 
 extension SignUpView {
-    var savebutton: some View {
-        Button("Realizar o seu cadastro") {
-            "so ppra arrumar o delete"
-        }
+    var genderField: some View {
+        Picker("Gender", selection: $gender) {
+            ForEach(Gender.allCases, id: \.self) { gender in
+                Text(gender.rawValue)
+                    .tag(gender)
+            }
+        }.pickerStyle(SegmentedPickerStyle())
+            .padding(.top, 16)
+            .padding(.bottom, 32)
     }
 }
 
-
+extension SignUpView {
+    var savebutton: some View {
+        Button("Realizar o seu cadastro") {
+            viewModel.signUp()
+        }
+    }
+}
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {

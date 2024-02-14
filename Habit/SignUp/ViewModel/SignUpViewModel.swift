@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 class SignUpViewModel: ObservableObject {
     
+    var signUpPublisher: PassthroughSubject<Bool, Never>!
     
     @Published var uiState: SignUpUiState = .none
     
-    func login(email: String, password: String){
+    func signUp() {
         
         setLoadingState()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-           
+            self.signUpPublisher.send(true)
         }
     }
     

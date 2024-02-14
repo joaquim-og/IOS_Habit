@@ -47,13 +47,9 @@ struct SignInView: View {
                                     }
                                 )
                                 
-                                if case SignInUiState.error(let error) = viewModel.uiState{
-                                    Text("").alert(isPresented: .constant(true)) {
-                                        Alert(title: Text("Habit"),
-                                              message: Text(error),
-                                              dismissButton: .default(Text("ok")) {}
-                                        )
-                                    }
+                                if case SignInUiState.error(let error) =
+                                    viewModel.uiState{
+                                    HabitErrorAlertComponent(error: error)
                                 }
                             }
                         )

@@ -6,11 +6,23 @@
 //
 
 import SwiftUI
+import Combine
 
 class SignInViewModel: ObservableObject {
     
+    private var signInCancellable: AnyCancellable?
+    private let signInPublisher = PassthroughSubject<Bool, Never>()
     
     @Published var uiState: SignInUiState = .none
+    
+    init() {
+        signInCancellable = signInPublisher.sink { isRegisterSuccessful in
+            debugPrint("XAblau aqui o isRegisterSuccessful -> \(isRegisterSuccessful)")
+            if (isRegisterSuccessful) {
+                self.setHomeNavigationState()
+            }
+        }
+    }
     
     func login(email: String, password: String){
         
@@ -29,16 +41,20 @@ class SignInViewModel: ObservableObject {
     private func setHomeNavigationState() {
         self.uiState = .goToHomeScreen
     }
+    
+    deinit {
+        signInCancellable?.cancel()
+    }
         
 }
 
 // MARK: - Navigation Routers
 extension SignInViewModel {
     func navigateToHomeView() -> some View {
-        return SignInViewRouter.navigateToHomeView()
+        return SignInViewRouter.navigateToHomeViewFromSignIn()
     }
     
     func navigateToSignUpView() -> some View {
-        return SignInViewRouter.navigateToSignUpView()
+        return SignInViewRouter.navigateToSignUpView(publisher: signInPublisher)
     }
 }
