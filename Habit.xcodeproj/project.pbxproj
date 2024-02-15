@@ -11,7 +11,10 @@
 		3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */; };
 		3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */; };
 		34298C2C2B7D4EA600821A1B /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C2B2B7D4EA600821A1B /* Gender.swift */; };
-		34298C302B7D545B00821A1B /* HabitErrorAlertComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C2F2B7D545B00821A1B /* HabitErrorAlertComponent.swift */; };
+		34298C302B7D545B00821A1B /* HabitErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C2F2B7D545B00821A1B /* HabitErrorAlert.swift */; };
+		34298C322B7D631500821A1B /* HabitEditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C312B7D631500821A1B /* HabitEditTextView.swift */; };
+		34298C352B7E1B5500821A1B /* CustomTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C342B7E1B5500821A1B /* CustomTextFieldStyle.swift */; };
+		34298C372B7E1D7700821A1B /* HabitSecureEditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C362B7E1D7700821A1B /* HabitSecureEditTextView.swift */; };
 		3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431445829CBAD3500AA31D5 /* HabitApp.swift */; };
 		3431445D29CBAD3600AA31D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3431445C29CBAD3600AA31D5 /* Assets.xcassets */; };
 		3431446029CBAD3600AA31D5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3431445F29CBAD3600AA31D5 /* Preview Assets.xcassets */; };
@@ -34,7 +37,10 @@
 		3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewRouter.swift; sourceTree = "<group>"; };
 		34298C2B2B7D4EA600821A1B /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
-		34298C2F2B7D545B00821A1B /* HabitErrorAlertComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitErrorAlertComponent.swift; sourceTree = "<group>"; };
+		34298C2F2B7D545B00821A1B /* HabitErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitErrorAlert.swift; sourceTree = "<group>"; };
+		34298C312B7D631500821A1B /* HabitEditTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditTextView.swift; sourceTree = "<group>"; };
+		34298C342B7E1B5500821A1B /* CustomTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyle.swift; sourceTree = "<group>"; };
+		34298C362B7E1D7700821A1B /* HabitSecureEditTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitSecureEditTextView.swift; sourceTree = "<group>"; };
 		3431445529CBAD3500AA31D5 /* Habit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3431445829CBAD3500AA31D5 /* HabitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitApp.swift; sourceTree = "<group>"; };
 		3431445C29CBAD3600AA31D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,7 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				344FDD902AF0503600AEA99D /* HabitLogo.swift */,
-				34298C2F2B7D545B00821A1B /* HabitErrorAlertComponent.swift */,
+				34298C2F2B7D545B00821A1B /* HabitErrorAlert.swift */,
+				34298C312B7D631500821A1B /* HabitEditTextView.swift */,
+				34298C362B7E1D7700821A1B /* HabitSecureEditTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +122,14 @@
 				34298C2B2B7D4EA600821A1B /* Gender.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		34298C332B7E1B2F00821A1B /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				34298C342B7E1B5500821A1B /* CustomTextFieldStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		3431444C29CBAD3500AA31D5 = {
@@ -243,6 +259,7 @@
 		344FDD8F2AF0501F00AEA99D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				34298C332B7E1B2F00821A1B /* Style */,
 				34298C2A2B7D4E9700821A1B /* Model */,
 				34298C292B7D4E6800821A1B /* Views */,
 			);
@@ -363,8 +380,9 @@
 			files = (
 				3431446B29CBB29000AA31D5 /* SplashView.swift in Sources */,
 				3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */,
-				34298C302B7D545B00821A1B /* HabitErrorAlertComponent.swift in Sources */,
+				34298C302B7D545B00821A1B /* HabitErrorAlert.swift in Sources */,
 				344FDD882AF04EEF00AEA99D /* HomeUiState.swift in Sources */,
+				34298C372B7E1D7700821A1B /* HabitSecureEditTextView.swift in Sources */,
 				344FDD912AF0503600AEA99D /* HabitLogo.swift in Sources */,
 				3431446D29CBB33D00AA31D5 /* SplashUiState.swift in Sources */,
 				3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */,
@@ -375,6 +393,8 @@
 				344FDD8D2AF04F5D00AEA99D /* HomeViewModel.swift in Sources */,
 				3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */,
 				344FDD9D2AF0593E00AEA99D /* SignUpView.swift in Sources */,
+				34298C352B7E1B5500821A1B /* CustomTextFieldStyle.swift in Sources */,
+				34298C322B7D631500821A1B /* HabitEditTextView.swift in Sources */,
 				343685182AF04705003414EF /* SignInUiState.swift in Sources */,
 				3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */,
 				34B81D8D29F9E5C90054E838 /* SplashViewModel.swift in Sources */,

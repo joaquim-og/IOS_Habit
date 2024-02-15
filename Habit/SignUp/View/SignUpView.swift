@@ -17,7 +17,7 @@ struct SignUpView: View {
     @State var password = ""
     @State var document = ""
     @State var phone = ""
-    @State var birthday = ""
+    @State var birthday = Date()
     @State var gender = Gender.male
     
     var body: some View {
@@ -49,7 +49,7 @@ struct SignUpView: View {
             }.padding()
             
             if case SignUpUiState.error(let error) = viewModel.uiState {
-                HabitErrorAlertComponent(error: error)
+                HabitErrorAlert(error: error)
             }
         }
     }
@@ -66,43 +66,72 @@ extension SignUpView {
 
 extension SignUpView {
     var fullNameField: some View {
-        TextField("", text: $fullName)
-            .border(Color.black)
+        HabitEditTextView(
+            text: $fullName,
+            placeHolder: "Nome Completo",
+            error: "Nome invalido",
+            failure: fullName.count < 5,
+            keyboard: .numbersAndPunctuation
+        )
     }
 }
 
 extension SignUpView {
     var emailField: some View {
-        TextField("", text: $email)
-            .border(Color.black)
+        HabitEditTextView(
+            text: $email,
+            placeHolder: "E-mail",
+            error: "E-mail invalido",
+            failure: email.count < 5,
+            keyboard: .emailAddress
+        )
     }
 }
 
 extension SignUpView {
     var passwordField: some View {
-        SecureField("", text: $password)
-            .border(Color.orange)
+        HabitSecureEditTextView(
+            text: $password,
+            placeHolder: "Password",
+            error: "Password deve conter 5 caracteres no minimo",
+            failure: password.count < 5
+        )
     }
 }
 
 extension SignUpView {
     var documentField: some View {
-        TextField("", text: $document)
-            .border(Color.black)
+        HabitEditTextView(
+            text: $document,
+            placeHolder: "Documento",
+            error: "Documento invalido",
+            failure: document.count < 5,
+            keyboard: .numbersAndPunctuation
+        )
     }
 }
 
 extension SignUpView {
     var phoneField: some View {
-        TextField("", text: $phone)
-            .border(Color.black)
+        HabitEditTextView(
+            text: $phone,
+            placeHolder: "Telefone",
+            error: "Telefone invalido",
+            failure: phone.count < 5,
+            keyboard: .phonePad
+        )
     }
 }
 
 extension SignUpView {
     var birthdayField: some View {
-        TextField("", text: $birthday)
-            .border(Color.black)
+        DatePicker("Data de nascimento",
+                   selection: $birthday,
+                   displayedComponents: .date
+        )
+        .datePickerStyle(CompactDatePickerStyle())
+        .padding(.top, 16)
+        .padding(.bottom, 16)
     }
 }
 

@@ -27,3 +27,23 @@ struct HabitLogoSplash: View {
             .ignoresSafeArea()
     }
 }
+
+
+struct HabitLogoPreviews: PreviewProvider {
+    static var previews: some View {
+        ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
+            HabitLogo()
+                .preferredColorScheme(colorScheme)
+        }
+    }
+}
+
+
+struct HabitLogoSplashPreviews: PreviewProvider {
+    static var previews: some View {
+        ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
+            HabitLogoSplash()
+                .preferredColorScheme(colorScheme)
+        }
+    }
+}
