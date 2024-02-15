@@ -29,6 +29,9 @@
 		344FDD992AF0582900AEA99D /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FDD982AF0582900AEA99D /* SignUpViewModel.swift */; };
 		344FDD9B2AF058BD00AEA99D /* SignUpUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FDD9A2AF058BD00AEA99D /* SignUpUiState.swift */; };
 		344FDD9D2AF0593E00AEA99D /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344FDD9C2AF0593E00AEA99D /* SignUpView.swift */; };
+		346F006C2B7EA7110064448A /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346F006B2B7EA7110064448A /* StringExtensions.swift */; };
+		346F00712B7EA9160064448A /* HabitLoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346F00702B7EA9160064448A /* HabitLoadingButtonView.swift */; };
+		346F00732B7EA9EE0064448A /* HabitTextsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346F00722B7EA9EE0064448A /* HabitTextsView.swift */; };
 		34B81D8D29F9E5C90054E838 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B81D8C29F9E5C90054E838 /* SplashViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,9 @@
 		344FDD982AF0582900AEA99D /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		344FDD9A2AF058BD00AEA99D /* SignUpUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUiState.swift; sourceTree = "<group>"; };
 		344FDD9C2AF0593E00AEA99D /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		346F006B2B7EA7110064448A /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		346F00702B7EA9160064448A /* HabitLoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitLoadingButtonView.swift; sourceTree = "<group>"; };
+		346F00722B7EA9EE0064448A /* HabitTextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTextsView.swift; sourceTree = "<group>"; };
 		34B81D8C29F9E5C90054E838 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +118,8 @@
 				34298C2F2B7D545B00821A1B /* HabitErrorAlert.swift */,
 				34298C312B7D631500821A1B /* HabitEditTextView.swift */,
 				34298C362B7E1D7700821A1B /* HabitSecureEditTextView.swift */,
+				346F00702B7EA9160064448A /* HabitLoadingButtonView.swift */,
+				346F00722B7EA9EE0064448A /* HabitTextsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 		344FDD8F2AF0501F00AEA99D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				346F006A2B7EA6F10064448A /* Extensions */,
 				34298C332B7E1B2F00821A1B /* Style */,
 				34298C2A2B7D4E9700821A1B /* Model */,
 				34298C292B7D4E6800821A1B /* Views */,
@@ -298,6 +307,14 @@
 				344FDD982AF0582900AEA99D /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		346F006A2B7EA6F10064448A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				346F006B2B7EA7110064448A /* StringExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		34B81D8B29F9E5A40054E838 /* ViewModel */ = {
@@ -380,10 +397,12 @@
 			files = (
 				3431446B29CBB29000AA31D5 /* SplashView.swift in Sources */,
 				3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */,
+				346F00712B7EA9160064448A /* HabitLoadingButtonView.swift in Sources */,
 				34298C302B7D545B00821A1B /* HabitErrorAlert.swift in Sources */,
 				344FDD882AF04EEF00AEA99D /* HomeUiState.swift in Sources */,
 				34298C372B7E1D7700821A1B /* HabitSecureEditTextView.swift in Sources */,
 				344FDD912AF0503600AEA99D /* HabitLogo.swift in Sources */,
+				346F006C2B7EA7110064448A /* StringExtensions.swift in Sources */,
 				3431446D29CBB33D00AA31D5 /* SplashUiState.swift in Sources */,
 				3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */,
 				344FDD992AF0582900AEA99D /* SignUpViewModel.swift in Sources */,
@@ -394,6 +413,7 @@
 				3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */,
 				344FDD9D2AF0593E00AEA99D /* SignUpView.swift in Sources */,
 				34298C352B7E1B5500821A1B /* CustomTextFieldStyle.swift in Sources */,
+				346F00732B7EA9EE0064448A /* HabitTextsView.swift in Sources */,
 				34298C322B7D631500821A1B /* HabitEditTextView.swift in Sources */,
 				343685182AF04705003414EF /* SignInUiState.swift in Sources */,
 				3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */,

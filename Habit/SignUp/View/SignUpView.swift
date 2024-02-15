@@ -57,10 +57,7 @@ struct SignUpView: View {
 
 extension SignUpView {
     var headerView: some View {
-        Text("Cadastro")
-            .foregroundColor(.black)
-            .font(Font.system(.title).bold())
-            .padding(.bottom, 8)
+        HabitTextTitleView(text: "Cadastro")
     }
 }
 
@@ -70,7 +67,7 @@ extension SignUpView {
             text: $fullName,
             placeHolder: "Nome Completo",
             error: "Nome invalido",
-            failure: fullName.count < 5,
+            failure: !fullName.isTextValidLenght(minLenght: 5),
             keyboard: .numbersAndPunctuation
         )
     }
@@ -82,7 +79,7 @@ extension SignUpView {
             text: $email,
             placeHolder: "E-mail",
             error: "E-mail invalido",
-            failure: email.count < 5,
+            failure: !email.isEmail(),
             keyboard: .emailAddress
         )
     }
@@ -94,7 +91,7 @@ extension SignUpView {
             text: $password,
             placeHolder: "Password",
             error: "Password deve conter 5 caracteres no minimo",
-            failure: password.count < 5
+            failure: !password.isTextValidLenght(minLenght: 5)
         )
     }
 }
@@ -105,7 +102,7 @@ extension SignUpView {
             text: $document,
             placeHolder: "Documento",
             error: "Documento invalido",
-            failure: document.count < 5,
+            failure: !document.isTextValidLenght(minLenght: 5),
             keyboard: .numbersAndPunctuation
         )
     }
@@ -117,7 +114,7 @@ extension SignUpView {
             text: $phone,
             placeHolder: "Telefone",
             error: "Telefone invalido",
-            failure: phone.count < 5,
+            failure: !phone.isTextValidLenght(minLenght: 5),
             keyboard: .phonePad
         )
     }
@@ -150,9 +147,18 @@ extension SignUpView {
 
 extension SignUpView {
     var savebutton: some View {
-        Button("Realizar o seu cadastro") {
-            viewModel.signUp()
-        }
+        HabitLoadingButtonView(
+            buttonText: "Realizar o seu cadastro",
+            action: {
+                viewModel.signUp()
+            },
+            disabled: !email.isEmail() || 
+            !password.isTextValidLenght(minLenght: 5) ||
+            !document.isTextValidLenght(minLenght: 5) ||
+            !fullName.isTextValidLenght(minLenght: 5) ||
+            !phone.isTextValidLenght(minLenght: 5),
+            showProgressBar: self.viewModel.uiState == SignUpUiState.loading
+        )
     }
 }
 

@@ -17,7 +17,6 @@ class SignInViewModel: ObservableObject {
     
     init() {
         signInCancellable = signInPublisher.sink { isRegisterSuccessful in
-            debugPrint("XAblau aqui o isRegisterSuccessful -> \(isRegisterSuccessful)")
             if (isRegisterSuccessful) {
                 self.setHomeNavigationState()
             }
@@ -37,6 +36,9 @@ class SignInViewModel: ObservableObject {
         self.uiState = .loading
     }
     
+    private func setErrorState(errorMessage: String) {
+        self.uiState = .error(errorMessage)
+    }
     
     private func setHomeNavigationState() {
         self.uiState = .goToHomeScreen

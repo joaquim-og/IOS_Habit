@@ -69,7 +69,7 @@ extension SignInView {
             text: $email,
             placeHolder: "E-mail",
             error: "E-mail invalido",
-            failure: email.count < 5,
+            failure: !email.isEmail(),
             keyboard: .emailAddress
         )
     }
@@ -81,16 +81,21 @@ extension SignInView {
             text: $password,
             placeHolder: "Password",
             error: "Password deve conter 5 caracteres no minimo",
-            failure: password.count < 5
+            failure: !password.isTextValidLenght(minLenght: 5)
         )
     }
 }
 
 extension SignInView {
     var enterbutton: some View {
-        Button("Entrar") {
-            viewModel.login(email: email, password: password)
-        }
+        HabitLoadingButtonView(
+            buttonText: "Entrar",
+            action: {
+                viewModel.login(email: email, password: password)
+            },
+            disabled: !email.isEmail() || !password.isTextValidLenght(minLenght: 5),
+            showProgressBar: self.viewModel.uiState == SignInUiState.loading
+        )
     }
 }
 

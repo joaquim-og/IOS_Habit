@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SignInUiState {
+enum SignInUiState: Equatable {
     case none
     case loading
     case goToHomeScreen
