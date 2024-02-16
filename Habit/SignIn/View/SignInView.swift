@@ -11,9 +11,6 @@ struct SignInView: View {
     
     @ObservedObject var viewModel: SignInViewModel
     
-    @State var email = ""
-    @State var password = ""
-    
     @State var action: Int? = 0
     @State var navigationHidden = true
     
@@ -66,10 +63,10 @@ struct SignInView: View {
 extension SignInView {
     var emailField: some View {
         HabitEditTextView(
-            text: $email,
+            text: $viewModel.email,
             placeHolder: "E-mail",
             error: "E-mail invalido",
-            failure: !email.isEmail(),
+            failure: !viewModel.email.isEmail(),
             keyboard: .emailAddress
         )
     }
@@ -78,10 +75,10 @@ extension SignInView {
 extension SignInView {
     var passwordField: some View {
         HabitSecureEditTextView(
-            text: $password,
+            text: $viewModel.password,
             placeHolder: "Password",
             error: "Password deve conter 5 caracteres no minimo",
-            failure: !password.isTextValidLenght(minLenght: 5)
+            failure: !viewModel.password.isTextValidLenght(minLenght: 5)
         )
     }
 }
@@ -91,9 +88,9 @@ extension SignInView {
         HabitLoadingButtonView(
             buttonText: "Entrar",
             action: {
-                viewModel.login(email: email, password: password)
+                viewModel.login()
             },
-            disabled: !email.isEmail() || !password.isTextValidLenght(minLenght: 5),
+            disabled: !viewModel.email.isEmail() || !viewModel.password.isTextValidLenght(minLenght: 5),
             showProgressBar: self.viewModel.uiState == SignInUiState.loading
         )
     }

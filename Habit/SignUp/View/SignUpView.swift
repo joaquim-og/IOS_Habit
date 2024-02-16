@@ -11,14 +11,7 @@ struct SignUpView: View {
     
     @ObservedObject var viewModel: SignUpViewModel
     
-    //TODO: move to VM
-    @State var fullName = ""
-    @State var email = ""
-    @State var password = ""
-    @State var document = ""
-    @State var phone = ""
-    @State var birthday = Date()
-    @State var gender = Gender.male
+
     
     var body: some View {
         ZStack{
@@ -64,10 +57,10 @@ extension SignUpView {
 extension SignUpView {
     var fullNameField: some View {
         HabitEditTextView(
-            text: $fullName,
+            text: $viewModel.fullName,
             placeHolder: "Nome Completo",
             error: "Nome invalido",
-            failure: !fullName.isTextValidLenght(minLenght: 5),
+            failure: !viewModel.fullName.isTextValidLenght(minLenght: 5),
             keyboard: .numbersAndPunctuation
         )
     }
@@ -76,10 +69,10 @@ extension SignUpView {
 extension SignUpView {
     var emailField: some View {
         HabitEditTextView(
-            text: $email,
+            text: $viewModel.email,
             placeHolder: "E-mail",
             error: "E-mail invalido",
-            failure: !email.isEmail(),
+            failure: !viewModel.email.isEmail(),
             keyboard: .emailAddress
         )
     }
@@ -88,10 +81,10 @@ extension SignUpView {
 extension SignUpView {
     var passwordField: some View {
         HabitSecureEditTextView(
-            text: $password,
+            text: $viewModel.password,
             placeHolder: "Password",
             error: "Password deve conter 5 caracteres no minimo",
-            failure: !password.isTextValidLenght(minLenght: 5)
+            failure: !viewModel.password.isTextValidLenght(minLenght: 5)
         )
     }
 }
@@ -99,10 +92,10 @@ extension SignUpView {
 extension SignUpView {
     var documentField: some View {
         HabitEditTextView(
-            text: $document,
+            text: $viewModel.document,
             placeHolder: "Documento",
             error: "Documento invalido",
-            failure: !document.isTextValidLenght(minLenght: 5),
+            failure: !viewModel.document.isTextValidLenght(minLenght: 5),
             keyboard: .numbersAndPunctuation
         )
     }
@@ -111,10 +104,10 @@ extension SignUpView {
 extension SignUpView {
     var phoneField: some View {
         HabitEditTextView(
-            text: $phone,
+            text: $viewModel.phone,
             placeHolder: "Telefone",
             error: "Telefone invalido",
-            failure: !phone.isTextValidLenght(minLenght: 5),
+            failure: !viewModel.phone.isTextValidLenght(minLenght: 5),
             keyboard: .phonePad
         )
     }
@@ -123,7 +116,7 @@ extension SignUpView {
 extension SignUpView {
     var birthdayField: some View {
         DatePicker("Data de nascimento",
-                   selection: $birthday,
+                   selection: $viewModel.birthday,
                    displayedComponents: .date
         )
         .datePickerStyle(CompactDatePickerStyle())
@@ -134,7 +127,7 @@ extension SignUpView {
 
 extension SignUpView {
     var genderField: some View {
-        Picker("Gender", selection: $gender) {
+        Picker("Gender", selection: $viewModel.gender) {
             ForEach(Gender.allCases, id: \.self) { gender in
                 Text(gender.rawValue)
                     .tag(gender)
@@ -152,11 +145,11 @@ extension SignUpView {
             action: {
                 viewModel.signUp()
             },
-            disabled: !email.isEmail() || 
-            !password.isTextValidLenght(minLenght: 5) ||
-            !document.isTextValidLenght(minLenght: 5) ||
-            !fullName.isTextValidLenght(minLenght: 5) ||
-            !phone.isTextValidLenght(minLenght: 5),
+            disabled: !viewModel.email.isEmail() || 
+            !viewModel.password.isTextValidLenght(minLenght: 5) ||
+            !viewModel.document.isTextValidLenght(minLenght: 5) ||
+            !viewModel.fullName.isTextValidLenght(minLenght: 5) ||
+            !viewModel.phone.isTextValidLenght(minLenght: 5),
             showProgressBar: self.viewModel.uiState == SignUpUiState.loading
         )
     }

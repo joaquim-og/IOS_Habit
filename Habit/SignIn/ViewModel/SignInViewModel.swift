@@ -14,6 +14,8 @@ class SignInViewModel: ObservableObject {
     private let signInPublisher = PassthroughSubject<Bool, Never>()
     
     @Published var uiState: SignInUiState = .none
+    @Published var email = ""
+    @Published var password = ""
     
     init() {
         signInCancellable = signInPublisher.sink { isRegisterSuccessful in
@@ -23,7 +25,7 @@ class SignInViewModel: ObservableObject {
         }
     }
     
-    func login(email: String, password: String){
+    func login() {
         
         setLoadingState()
         
@@ -47,7 +49,7 @@ class SignInViewModel: ObservableObject {
     deinit {
         signInCancellable?.cancel()
     }
-        
+    
 }
 
 // MARK: - Navigation Routers

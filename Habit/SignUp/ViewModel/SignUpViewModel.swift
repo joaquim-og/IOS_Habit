@@ -14,6 +14,14 @@ class SignUpViewModel: ObservableObject {
     
     @Published var uiState: SignUpUiState = .none
     
+    @Published var fullName = ""
+    @Published var email = ""
+    @Published var password = ""
+    @Published var document = ""
+    @Published var phone = ""
+    @Published var birthday = Date()
+    @Published var gender = Gender.male
+    
     func signUp() {
         
         setLoadingState()
