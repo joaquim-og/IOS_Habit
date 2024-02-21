@@ -29,21 +29,41 @@ class SignInViewModel: ObservableObject {
         
         setLoadingState()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.setHomeNavigationState()
-        }
+        let request = SignInRequest(
+            email: email,
+            password: password
+        )
+        
+        WebService.login(
+            request: request,
+            onComplete: {(successResponse, errorResponse) in
+                if let error = errorResponse {
+                    debugPrint("Xablau aqui o error -> \(error.detail?.message ?? "")")
+                    self.setErrorState(errorMessage: error.detail?.message ?? "")
+                }
+                if let success = successResponse {
+                    debugPrint("Xablau aqui o success -> \(success)")
+                    self.setHomeNavigationState()
+                }
+            })
     }
     
     private func setLoadingState() {
-        self.uiState = .loading
+        DispatchQueue.main.async {
+            self.uiState = .loading
+        }
     }
     
     private func setErrorState(errorMessage: String) {
-        self.uiState = .error(errorMessage)
+        DispatchQueue.main.async {
+            self.uiState = .error(errorMessage)
+        }
     }
     
     private func setHomeNavigationState() {
-        self.uiState = .goToHomeScreen
+        DispatchQueue.main.async {
+            self.uiState = .goToHomeScreen
+        }
     }
     
     deinit {

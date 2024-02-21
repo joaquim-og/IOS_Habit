@@ -26,18 +26,61 @@ class SignUpViewModel: ObservableObject {
         
         setLoadingState()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        let request = SignUpRequest(
+            fullName: fullName,
+            email: email,
+            password: password,
+            document: document,
+            phone:phone,
+            birthday: birthday.formatToPattern(pattern: Date.DatesPatterns.YYYYMMDD),
+            gender: gender.index
+        )
+        
+        WebService.postUser(
+            request: request,
+            onComplete: {(successResponse, errorResponse) in
+                if let error = errorResponse {
+                    self.setErrorState(error: error.detail)
+                }
+                if let success = successResponse {
+                    if (success){
+                        WebService.login(
+                            request: SignInRequest(
+                                email: self.email,
+                                password: self.password
+                            ),
+                            onComplete: {(successResponse, errorResponse) in
+                                if let error = errorResponse {
+                                    self.setErrorState(error: error.detail?.message ?? "")
+                                }
+                                if let success = successResponse {
+                                    self.setSuccessState()
+                                }
+                            })
+                    } else {
+                        self.setErrorState(error: "We have some problems. Please try again later.")
+                    }
+                }
+            })
+    }
+    
+    private func setLoadingState() {
+        DispatchQueue.main.async {
+            self.uiState = .loading
+        }
+    }
+    
+    private func setSuccessState() {
+        DispatchQueue.main.async {
+            self.uiState = .success
             self.signUpPublisher.send(true)
         }
     }
     
-    private func setLoadingState() {
-        self.uiState = .loading
-    }
-
-    
     private func setErrorState(error: String) {
-        self.uiState = .error(error)
+        DispatchQueue.main.async {
+            self.uiState = .error(error)
+        }
     }
-        
+    
 }
