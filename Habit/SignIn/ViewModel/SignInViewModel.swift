@@ -11,13 +11,17 @@ import Combine
 class SignInViewModel: ObservableObject {
     
     private var signInCancellable: AnyCancellable?
+    private var requestCancellable: AnyCancellable?
     private let signInPublisher = PassthroughSubject<Bool, Never>()
+    private let interactor: SignInInteractor
     
     @Published var uiState: SignInUiState = .none
     @Published var email = ""
     @Published var password = ""
     
-    init() {
+    init(interactor: SignInInteractor) {
+        self.interactor = interactor
+        
         signInCancellable = signInPublisher.sink { isRegisterSuccessful in
             if (isRegisterSuccessful) {
                 self.setHomeNavigationState()
@@ -34,18 +38,21 @@ class SignInViewModel: ObservableObject {
             password: password
         )
         
-        WebService.login(
-            request: request,
-            onComplete: {(successResponse, errorResponse) in
-                if let error = errorResponse {
-                    debugPrint("Xablau aqui o error -> \(error.detail?.message ?? "")")
-                    self.setErrorState(errorMessage: error.detail?.message ?? "")
-                }
-                if let success = successResponse {
-                    debugPrint("Xablau aqui o success -> \(success)")
-                    self.setHomeNavigationState()
-                }
-            })
+        requestCancellable = interactor.login(
+            request: request
+        )
+        .receive(on: DispatchQueue.main)
+        .sink { onComplete in
+            switch (onComplete) {
+            case .failure(let appError):
+                self.setErrorState(errorMessage: appError.message)
+                break
+            case .finished:
+                break
+            }
+        } receiveValue: { successResponse in
+            self.setHomeNavigationState()
+        }
     }
     
     private func setLoadingState() {
@@ -55,19 +62,16 @@ class SignInViewModel: ObservableObject {
     }
     
     private func setErrorState(errorMessage: String) {
-        DispatchQueue.main.async {
-            self.uiState = .error(errorMessage)
-        }
+        self.uiState = .error(errorMessage)
     }
     
     private func setHomeNavigationState() {
-        DispatchQueue.main.async {
-            self.uiState = .goToHomeScreen
-        }
+        self.uiState = .goToHomeScreen
     }
     
     deinit {
         signInCancellable?.cancel()
+        requestCancellable?.cancel()
     }
     
 }

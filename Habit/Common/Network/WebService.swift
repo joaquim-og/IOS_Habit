@@ -86,7 +86,7 @@ enum WebService {
         
     }
     
-    private static func callJsonFormat<T: Encodable>(
+    static func callJsonFormat<T: Encodable>(
         path: Endpoint,
         method: RequestType,
         body: T,
@@ -97,7 +97,7 @@ enum WebService {
         callApi(path: path, contentType: ContentType.json, method: method, data: jsonData, onComplete: onComplete)
     }
     
-    private static func callFormDataFormat(
+    static func callFormDataFormat(
         path: Endpoint,
         method: RequestType,
         params: [URLQueryItem],
@@ -114,68 +114,5 @@ enum WebService {
         components?.queryItems = params
                
         callApi(path: path, contentType: ContentType.formUrl, method: method, data: components?.query?.data(using: .utf8), onComplete: onComplete)
-    }
-    
-    static func postUser(
-        request: SignUpRequest,
-        onComplete: @escaping (Bool?, ErrorReponse?) -> Void
-    ) {
-        
-        let decoder = JSONDecoder()
-                
-        callJsonFormat(
-            path: Endpoint.postUser,
-            method: RequestType.POST,
-            body: request,
-            onComplete: { result in
-                switch result {
-                case .failure(let error, let data):
-                    if let errorData = data {
-                        if error == .badRequest {
-                            let responseError = try? decoder.decode(ErrorReponse.self, from: errorData)
-                            onComplete(nil, responseError)
-                        }
-                    }
-                    break
-                case .success(let data):
-                    let response = try? decoder.decode(SignUpResponse.self, from: data)
-                    onComplete(true, nil)
-                    break
-                }
-            }
-        )
-    }
-    
-    static func login(
-        request: SignInRequest,
-        onComplete: @escaping (SignInResponse?, SignInErrorResponse?) -> Void
-    ) {
-        
-        let decoder = JSONDecoder()
-                
-        callFormDataFormat(
-            path: Endpoint.login,
-            method: RequestType.POST,
-            params: [
-                URLQueryItem(name: "username", value: request.email),
-                URLQueryItem(name: "password", value: request.password)
-            ],
-            onComplete: { result in
-                switch result {
-                case .failure(let error, let data):
-                    if let errorData = data {
-                        if error == .unauthorized {
-                            let responseError = try? decoder.decode(SignInErrorResponse.self, from: errorData)
-                            onComplete(nil, responseError)
-                        }
-                    }
-                    break
-                case .success(let data):
-                    let response = try? decoder.decode(SignInResponse.self, from: data)
-                    onComplete(response, nil)
-                    break
-                }
-            }
-        )
     }
 }

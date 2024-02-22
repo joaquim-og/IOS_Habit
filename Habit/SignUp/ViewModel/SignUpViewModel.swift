@@ -11,6 +11,10 @@ import Combine
 class SignUpViewModel: ObservableObject {
     
     var signUpPublisher: PassthroughSubject<Bool, Never>!
+    private var requestSignUpCancellable: AnyCancellable?
+    private var requestSignInCancellable: AnyCancellable?
+    private let signUpInteractor: SignUpInteractor
+    
     
     @Published var uiState: SignUpUiState = .none
     
@@ -21,6 +25,15 @@ class SignUpViewModel: ObservableObject {
     @Published var phone = ""
     @Published var birthday = Date()
     @Published var gender = Gender.male
+    
+    init(signUpInteractor: SignUpInteractor) {
+        self.signUpInteractor = signUpInteractor
+    }
+    
+    deinit {
+        requestSignUpCancellable?.cancel()
+        requestSignInCancellable?.cancel()
+    }
     
     func signUp() {
         
@@ -36,32 +49,42 @@ class SignUpViewModel: ObservableObject {
             gender: gender.index
         )
         
-        WebService.postUser(
-            request: request,
-            onComplete: {(successResponse, errorResponse) in
-                if let error = errorResponse {
-                    self.setErrorState(error: error.detail)
-                }
-                if let success = successResponse {
-                    if (success){
-                        WebService.login(
-                            request: SignInRequest(
-                                email: self.email,
-                                password: self.password
-                            ),
-                            onComplete: {(successResponse, errorResponse) in
-                                if let error = errorResponse {
-                                    self.setErrorState(error: error.detail?.message ?? "")
-                                }
-                                if let success = successResponse {
-                                    self.setSuccessState()
-                                }
-                            })
-                    } else {
-                        self.setErrorState(error: "We have some problems. Please try again later.")
+        requestSignUpCancellable = signUpInteractor.signUp(
+            request: request
+        )
+        .receive(on: DispatchQueue.main)
+        .sink { onComplete in
+            switch (onComplete) {
+            case .failure(let appError):
+                self.setErrorState(error: appError.message)
+                break
+            case .finished:
+                break
+            }
+        } receiveValue: { successSignUp in
+            if (successSignUp) {
+                self.requestSignInCancellable = self.signUpInteractor.login(
+                    request: SignInRequest(
+                        email: self.email,
+                        password: self.password
+                    )
+                )
+                .receive(on: DispatchQueue.main)
+                .sink { onComplete in
+                    switch (onComplete) {
+                    case .failure(let appError):
+                        self.setErrorState(error: appError.message)
+                        break
+                    case .finished:
+                        break
                     }
+                } receiveValue: { successResponse in
+                    self.setSuccessState()
                 }
-            })
+            } else {
+                self.setErrorState(error: "User created, but can't login by now. Please try again later.")
+            }
+        }
     }
     
     private func setLoadingState() {
