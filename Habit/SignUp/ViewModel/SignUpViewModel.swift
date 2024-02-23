@@ -79,6 +79,14 @@ class SignUpViewModel: ObservableObject {
                         break
                     }
                 } receiveValue: { successResponse in
+                    self.signUpInteractor.insertAuth(
+                        userAuth: UserAuth(
+                            idToken: successResponse.accessToken,
+                            refreshToken: successResponse.refreshToken,
+                            expires: Date().timeIntervalSince1970 + Double(successResponse.expires),
+                            tokenType: successResponse.tokenType
+                        )
+                    )
                     self.setSuccessState()
                 }
             } else {
