@@ -13,6 +13,7 @@ enum WebService {
         case base = "https://habitplus-api.tiagoaguiar.co"
         case postUser = "/users"
         case login = "/auth/login"
+        case refreshToken = "/auth/refresh-token"
     }
     
     enum RequestType: String {
@@ -55,35 +56,40 @@ enum WebService {
             return
         }
         
-        urlRequest.httpMethod = method.rawValue
-        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: "accept")
-        urlRequest.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
-        urlRequest.httpBody = data
-               
-        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            guard let data = data, error == nil else {
-                onComplete(.failure(.internalServerError, nil))
-                return
-            }
-            
-            if let responseParsed = response as? HTTPURLResponse {
-                switch responseParsed.statusCode {
-                case 400:
-                    onComplete(.failure(.badRequest, data))
-                    break
-                case 401:
-                    onComplete(.failure(.unauthorized, data))
-                    break
-                case 200:
-                    onComplete(.success(data))
-                default:
-                    break
+        _ = LocalDataSource.sharedLocalDataSource.getUserAuth()
+            .sink { userAuth in
+                if let user = userAuth {
+                    urlRequest.setValue("\(user.tokenType) \(user.idToken)", forHTTPHeaderField: "Authorization")
                 }
+                
+                urlRequest.httpMethod = method.rawValue
+                urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: "accept")
+                urlRequest.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
+                urlRequest.httpBody = data
+                       
+                let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+                    guard let data = data, error == nil else {
+                        onComplete(.failure(.internalServerError, nil))
+                        return
+                    }
+                    
+                    if let responseParsed = response as? HTTPURLResponse {
+                        switch responseParsed.statusCode {
+                        case 400:
+                            onComplete(.failure(.badRequest, data))
+                            break
+                        case 401:
+                            onComplete(.failure(.unauthorized, data))
+                            break
+                        case 200:
+                            onComplete(.success(data))
+                        default:
+                            break
+                        }
+                    }
+                }
+                task.resume()
             }
-        }
-        
-        task.resume()
-        
     }
     
     static func callJsonFormat<T: Encodable>(

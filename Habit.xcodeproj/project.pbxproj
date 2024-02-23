@@ -10,6 +10,8 @@
 		3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CC2AD49CC300144C0F /* SignInView.swift */; };
 		3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */; };
 		3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */; };
+		3427C8082B8921670089A37F /* RefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3427C8072B8921670089A37F /* RefreshRequest.swift */; };
+		3427C80A2B8924710089A37F /* SplashRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3427C8092B8924710089A37F /* SplashRemoteDataSource.swift */; };
 		34298C2C2B7D4EA600821A1B /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C2B2B7D4EA600821A1B /* Gender.swift */; };
 		34298C302B7D545B00821A1B /* HabitErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C2F2B7D545B00821A1B /* HabitErrorAlert.swift */; };
 		34298C322B7D631500821A1B /* HabitEditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34298C312B7D631500821A1B /* HabitEditTextView.swift */; };
@@ -55,6 +57,8 @@
 		3414D6CC2AD49CC300144C0F /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewRouter.swift; sourceTree = "<group>"; };
+		3427C8072B8921670089A37F /* RefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequest.swift; sourceTree = "<group>"; };
+		3427C8092B8924710089A37F /* SplashRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRemoteDataSource.swift; sourceTree = "<group>"; };
 		34298C2B2B7D4EA600821A1B /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		34298C2F2B7D545B00821A1B /* HabitErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitErrorAlert.swift; sourceTree = "<group>"; };
 		34298C312B7D631500821A1B /* HabitEditTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditTextView.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				3431446C29CBB33D00AA31D5 /* SplashUiState.swift */,
+				3427C8072B8921670089A37F /* RefreshRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 				3493E5FC2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift */,
 				34A109672B7FED64003E2490 /* WebService.swift */,
 				343659052B8687140022FD96 /* SignInRemoteDataSource.swift */,
+				3427C8092B8924710089A37F /* SplashRemoteDataSource.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 				3431446D29CBB33D00AA31D5 /* SplashUiState.swift in Sources */,
 				3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */,
 				344FDD992AF0582900AEA99D /* SignUpViewModel.swift in Sources */,
+				3427C80A2B8924710089A37F /* SplashRemoteDataSource.swift in Sources */,
 				344FDD9B2AF058BD00AEA99D /* SignUpUiState.swift in Sources */,
 				344FDD8B2AF04F2100AEA99D /* HomeView.swift in Sources */,
 				34A109682B7FED64003E2490 /* WebService.swift in Sources */,
@@ -524,6 +531,7 @@
 				34298C322B7D631500821A1B /* HabitEditTextView.swift in Sources */,
 				343685182AF04705003414EF /* SignInUiState.swift in Sources */,
 				3493E5FF2B87D13700DDBA7F /* UserAuth.swift in Sources */,
+				3427C8082B8921670089A37F /* RefreshRequest.swift in Sources */,
 				3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */,
 				34B81D8D29F9E5C90054E838 /* SplashViewModel.swift in Sources */,
 				346AF1182B8636AF00AEFA42 /* SignInResponse.swift in Sources */,
