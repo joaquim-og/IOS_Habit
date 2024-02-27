@@ -32,8 +32,6 @@ class SplashViewModel: ObservableObject {
                 if (userAuth == nil) {
                     self.updateSplashUiState(state: .goToSignScreen)
                 } else if (Date().timeIntervalSince1970 > Double(userAuth!.expires)) {
-                    // todo
-                    // call refresh token in api
                     let request = RefreshRequest(token: userAuth!.refreshToken)
                     self.refreshTokenCancellable = self.interactor.refreshToken(request: request)
                         .receive(on: DispatchQueue.main)
