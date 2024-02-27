@@ -6,12 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HomeViewModel: ObservableObject {
     
     
     @Published var uiState: HomeUiState = .none
     
-
     
+    
+}
+
+extension HomeViewModel {
+    func habitView() -> some View {
+        return HomeViewRouter.makeHabitView()
+    }
 }
