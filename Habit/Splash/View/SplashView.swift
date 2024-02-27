@@ -48,7 +48,7 @@ extension SplashView {
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = SplashViewModel(interactor: SplashInteractor())
+        let viewModel = SplashViewModel()
         
         SplashView(viewModel: viewModel)
     }

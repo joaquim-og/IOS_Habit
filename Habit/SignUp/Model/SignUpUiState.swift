@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum SignUpUiState: Equatable {
+enum SignUpUiState {
     case none
     case loading
-    case success
+    case somethingToChange
     case error(String)
 }

@@ -6,25 +6,11 @@
 //
 
 import SwiftUI
-import Combine
 
 class SplashViewModel: ObservableObject {
     
-    private let interactor: SplashInteractor
-    private var splashCancellable: AnyCancellable?
-    private var refreshTokenCancellable: AnyCancellable?
-    
     @Published var uiState: SplashUistate = .loading
-    
-    init(interactor: SplashInteractor) {
-        self.interactor = interactor
-    }
-    
-    deinit {
-        splashCancellable?.cancel()
-        refreshTokenCancellable?.cancel()
-    }
-    
+
     func onAppear() {
         splashCancellable = interactor.fetchAuth()
             .receive(on: DispatchQueue.main)

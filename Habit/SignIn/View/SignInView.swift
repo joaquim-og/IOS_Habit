@@ -11,6 +11,9 @@ struct SignInView: View {
     
     @ObservedObject var viewModel: SignInViewModel
     
+    @State var email = ""
+    @State var password = ""
+    
     @State var action: Int? = 0
     @State var navigationHidden = true
     
@@ -44,14 +47,19 @@ struct SignInView: View {
                                     }
                                 )
                                 
-                                if case SignInUiState.error(let error) =
-                                    viewModel.uiState{
-                                    HabitErrorAlert(error: error)
+                                if case SignInUiState.error(let error) = viewModel.uiState{
+                                    Text("").alert(isPresented: .constant(true)) {
+                                        Alert(title: Text("Habit"),
+                                              message: Text(error),
+                                              dismissButton: .default(Text("ok")) {}
+                                        )
+                                    }
                                 }
                             }
                         )
                     }.frame(maxWidth:.infinity, maxHeight: .infinity)
                         .padding(.horizontal, 32)
+                        .background(Color.white)
                         .navigationBarTitle("Login", displayMode: .inline)
                         .navigationBarHidden(navigationHidden)
                 }
@@ -62,37 +70,23 @@ struct SignInView: View {
 
 extension SignInView {
     var emailField: some View {
-        HabitEditTextView(
-            text: $viewModel.email,
-            placeHolder: "E-mail",
-            error: "E-mail invalido",
-            failure: !viewModel.email.isEmail(),
-            keyboard: .emailAddress
-        )
+        TextField("", text: $email)
+            .border(Color.black)
     }
 }
 
 extension SignInView {
     var passwordField: some View {
-        HabitSecureEditTextView(
-            text: $viewModel.password,
-            placeHolder: "Password",
-            error: "Password deve conter 5 caracteres no minimo",
-            failure: !viewModel.password.isTextValidLenght(minLenght: 5)
-        )
+        SecureField("", text: $password)
+            .border(Color.orange)
     }
 }
 
 extension SignInView {
     var enterbutton: some View {
-        HabitLoadingButtonView(
-            buttonText: "Entrar",
-            action: {
-                viewModel.login()
-            },
-            disabled: !viewModel.email.isEmail() || !viewModel.password.isTextValidLenght(minLenght: 5),
-            showProgressBar: self.viewModel.uiState == SignInUiState.loading
-        )
+        Button("Entrar") {
+            viewModel.login(email: email, password: password)
+        }
     }
 }
 
@@ -123,12 +117,8 @@ extension SignInView {
 
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-            let viewModel = SignInViewModel(interactor: SignInInteractor())
-            
-            SignInView(viewModel: viewModel)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .preferredColorScheme(colorScheme)
-        }
+        let viewModel = SignInViewModel()
+        
+        SignInView(viewModel: viewModel)
     }
 }

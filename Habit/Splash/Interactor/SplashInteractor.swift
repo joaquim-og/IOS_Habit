@@ -9,8 +9,10 @@ import Foundation
 import Combine
 
 class SplashInteractor {
+    
     private let remoteDataSource: SplashRemoteDataSource = SplashRemoteDataSource.splashRemoteDataSourceShared
     private let localDataSource: LocalDataSource = LocalDataSource.sharedLocalDataSource
+    
 }
 
 extension SplashInteractor {
