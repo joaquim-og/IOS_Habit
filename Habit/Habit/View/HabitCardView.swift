@@ -18,7 +18,14 @@ struct HabitCardView: View {
             alignment: .trailing,
             content: {
                 NavigationLink(
-                    destination: Text("Destination"),
+                    destination: HabitDetailView(
+                        viewModel: HabitDetailsViewModel(
+                            interactor: HabitDetailInteractor(),
+                            id: viewModel.id,
+                            name: viewModel.name,
+                            label: viewModel.label
+                        )
+                    ),
                     isActive: self.$action,
                     label: {
                         EmptyView()
