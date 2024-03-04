@@ -51,6 +51,10 @@
 		346F006C2B7EA7110064448A /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346F006B2B7EA7110064448A /* StringExtensions.swift */; };
 		346F00712B7EA9160064448A /* HabitLoadingButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346F00702B7EA9160064448A /* HabitLoadingButtonView.swift */; };
 		346F00732B7EA9EE0064448A /* HabitTextsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346F00722B7EA9EE0064448A /* HabitTextsView.swift */; };
+		348BEB4E2B965C9F007DDF7A /* HabitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB4D2B965C9F007DDF7A /* HabitResponse.swift */; };
+		348BEB512B965DDF007DDF7A /* HabitRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB502B965DDF007DDF7A /* HabitRemoteDataSource.swift */; };
+		348BEB532B965FE9007DDF7A /* HabitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB522B965FE9007DDF7A /* HabitInteractor.swift */; };
+		348BEB552B9662F3007DDF7A /* HabitResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB542B9662F3007DDF7A /* HabitResponseMapper.swift */; };
 		3493E5FD2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E5FC2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift */; };
 		3493E5FF2B87D13700DDBA7F /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E5FE2B87D13700DDBA7F /* UserAuth.swift */; };
 		3493E6032B87D26800DDBA7F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E6022B87D26800DDBA7F /* LocalDataSource.swift */; };
@@ -106,6 +110,10 @@
 		346F006B2B7EA7110064448A /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		346F00702B7EA9160064448A /* HabitLoadingButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitLoadingButtonView.swift; sourceTree = "<group>"; };
 		346F00722B7EA9EE0064448A /* HabitTextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTextsView.swift; sourceTree = "<group>"; };
+		348BEB4D2B965C9F007DDF7A /* HabitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitResponse.swift; sourceTree = "<group>"; };
+		348BEB502B965DDF007DDF7A /* HabitRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRemoteDataSource.swift; sourceTree = "<group>"; };
+		348BEB522B965FE9007DDF7A /* HabitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInteractor.swift; sourceTree = "<group>"; };
+		348BEB542B9662F3007DDF7A /* HabitResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitResponseMapper.swift; sourceTree = "<group>"; };
 		3493E5FC2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRemoteDataSource.swift; sourceTree = "<group>"; };
 		3493E5FE2B87D13700DDBA7F /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		3493E6022B87D26800DDBA7F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
@@ -394,6 +402,7 @@
 		346604DA2B8E794800D3452D /* Habit */ = {
 			isa = PBXGroup;
 			children = (
+				348BEB4F2B965DC6007DDF7A /* Interactor */,
 				346604DE2B8E796200D3452D /* Navigation */,
 				346604DD2B8E795E00D3452D /* View */,
 				346604DC2B8E795500D3452D /* ViewModel */,
@@ -406,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				346604E12B8E799800D3452D /* HabitUiState.swift */,
+				348BEB4D2B965C9F007DDF7A /* HabitResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -448,8 +458,17 @@
 			children = (
 				346F006B2B7EA7110064448A /* StringExtensions.swift */,
 				34A109692B7FF4AB003E2490 /* DateExtensions.swift */,
+				348BEB542B9662F3007DDF7A /* HabitResponseMapper.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		348BEB4F2B965DC6007DDF7A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				348BEB522B965FE9007DDF7A /* HabitInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		3493E6002B87D1FF00DDBA7F /* Local */ = {
@@ -480,6 +499,7 @@
 		34A109662B7FED3A003E2490 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				348BEB502B965DDF007DDF7A /* HabitRemoteDataSource.swift */,
 				3493E5FC2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift */,
 				34A109672B7FED64003E2490 /* WebService.swift */,
 				343659052B8687140022FD96 /* SignInRemoteDataSource.swift */,
@@ -567,11 +587,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				346604E22B8E799800D3452D /* HabitUiState.swift in Sources */,
+				348BEB512B965DDF007DDF7A /* HabitRemoteDataSource.swift in Sources */,
 				346604E72B8E866C00D3452D /* HabitCardViewModel.swift in Sources */,
 				346604E52B8E852400D3452D /* ButtonStyle.swift in Sources */,
 				346604E92B8E872F00D3452D /* HabitCardView.swift in Sources */,
 				3431446B29CBB29000AA31D5 /* SplashView.swift in Sources */,
 				346AF1162B8635A200AEFA42 /* SignInRequest.swift in Sources */,
+				348BEB532B965FE9007DDF7A /* HabitInteractor.swift in Sources */,
 				3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */,
 				346F00712B7EA9160064448A /* HabitLoadingButtonView.swift in Sources */,
 				34298C302B7D545B00821A1B /* HabitErrorAlert.swift in Sources */,
@@ -584,6 +606,7 @@
 				343659062B8687140022FD96 /* SignInRemoteDataSource.swift in Sources */,
 				3431446D29CBB33D00AA31D5 /* SplashUiState.swift in Sources */,
 				3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */,
+				348BEB552B9662F3007DDF7A /* HabitResponseMapper.swift in Sources */,
 				344FDD992AF0582900AEA99D /* SignUpViewModel.swift in Sources */,
 				3427C80A2B8924710089A37F /* SplashRemoteDataSource.swift in Sources */,
 				344FDD9B2AF058BD00AEA99D /* SignUpUiState.swift in Sources */,
@@ -611,6 +634,7 @@
 				34B81D8D29F9E5C90054E838 /* SplashViewModel.swift in Sources */,
 				346AF1182B8636AF00AEFA42 /* SignInResponse.swift in Sources */,
 				34298C2C2B7D4EA600821A1B /* Gender.swift in Sources */,
+				348BEB4E2B965C9F007DDF7A /* HabitResponse.swift in Sources */,
 				3436590E2B869AAF0022FD96 /* SignUpErrorResponse.swift in Sources */,
 				346604E02B8E797800D3452D /* HabitViewModel.swift in Sources */,
 				3436590B2B86980F0022FD96 /* SignUpInteractor.swift in Sources */,

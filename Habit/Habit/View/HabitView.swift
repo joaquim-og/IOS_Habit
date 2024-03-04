@@ -27,15 +27,38 @@ struct HabitView: View {
                                 if case HabitUiState.emptyList = viewModel.uiState {
                                     Spacer(minLength: 60)
                                     emptyListView
-                                } else if case HabitUiState.fullList = viewModel.uiState {
+                                } else if case HabitUiState.fullList(let rows) = viewModel.uiState {
                                     
-                                } else if case HabitUiState.error = viewModel.uiState {
+                                    LazyVStack {
+                                        ForEach(rows) { row in
+                                            HabitCardView.init(viewModel: row)
+                                        }
+                                    }.padding(.horizontal, 14)
                                     
+                                } else if case HabitUiState.error(let msg) = viewModel.uiState {
+                                    Text("")
+                                        .alert(
+                                            isPresented: .constant(true),
+                                            content: {
+                                                Alert(
+                                                    title: Text("Ops \(msg)"),
+                                                    message: Text("Tentar novamente?"),
+                                                    primaryButton: .default(Text("Sim")) {
+                                                        viewModel.onAppear()
+                                                    },
+                                                    secondaryButton: .cancel()
+                                                )
+                                            }
+                                        )
                                 }
                             }
                         }
                     )
                 }.navigationTitle("Meus Hábitos")
+            }
+        }.onAppear {
+            if (!viewModel.opened) {
+                viewModel.onAppear()
             }
         }
     }
@@ -112,7 +135,7 @@ extension HabitView {
 
 struct HabitView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = HabitViewModel()
+        let viewModel = HabitViewModel(interactor: HabitInteractor())
         
         HabitView(viewModel: viewModel)
     }

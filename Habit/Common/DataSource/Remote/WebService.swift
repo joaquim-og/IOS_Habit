@@ -14,6 +14,7 @@ enum WebService {
         case postUser = "/users"
         case login = "/auth/login"
         case refreshToken = "/auth/refresh-token"
+        case habits = "/users/me/habits"
     }
     
     enum RequestType: String {
@@ -101,6 +102,14 @@ enum WebService {
         guard let jsonData = try? JSONEncoder().encode(body) else {return}
                
         callApi(path: path, contentType: ContentType.json, method: method, data: jsonData, onComplete: onComplete)
+    }
+    
+    static func callJsonFormatWithoutBody(
+        path: Endpoint,
+        method: RequestType,
+        onComplete: @escaping (Result) -> Void
+    ) {
+        callApi(path: path, contentType: ContentType.json, method: method, data: nil, onComplete: onComplete)
     }
     
     static func callFormDataFormat(

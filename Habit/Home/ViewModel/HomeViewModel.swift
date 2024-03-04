@@ -9,16 +9,11 @@ import Foundation
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    
-    
-    @Published var uiState: HomeUiState = .none
-    
-    
-    
+   let viewModel = HabitViewModel(interactor: HabitInteractor())
 }
 
 extension HomeViewModel {
     func habitView() -> some View {
-        return HomeViewRouter.makeHabitView()
+        return HomeViewRouter.makeHabitView(viewModel: viewModel)
     }
 }
