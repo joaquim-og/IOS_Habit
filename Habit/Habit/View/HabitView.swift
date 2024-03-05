@@ -54,7 +54,7 @@ struct HabitView: View {
                             }
                         }
                     )
-                }.navigationTitle("Meus Hábitos")
+                }
             }
         }.onAppear {
             if (!viewModel.opened) {
@@ -102,6 +102,7 @@ extension HabitView {
         )
         .padding(.horizontal, 16)
         .padding(.top, 16)
+        .navigationTitle("Meus Hábitos")
     }
 }
 

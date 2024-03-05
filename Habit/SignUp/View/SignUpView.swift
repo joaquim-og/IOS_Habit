@@ -141,16 +141,16 @@ extension SignUpView {
 extension SignUpView {
     var savebutton: some View {
         HabitLoadingButtonView(
-            buttonText: "Realizar o seu cadastro",
             action: {
                 viewModel.signUp()
             },
-            disabled: !viewModel.email.isEmail() || 
+            buttonText: "Realizar o seu cadastro",
+            showProgress: !viewModel.email.isEmail() || 
             !viewModel.password.isTextValidLenght(minLenght: 5) ||
             !viewModel.document.isTextValidLenght(minLenght: 5) ||
             !viewModel.fullName.isTextValidLenght(minLenght: 5) ||
             !viewModel.phone.isTextValidLenght(minLenght: 5),
-            showProgressBar: self.viewModel.uiState == SignUpUiState.loading
+            disabled: self.viewModel.uiState == SignUpUiState.loading
         )
     }
 }

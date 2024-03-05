@@ -9,7 +9,7 @@ import Foundation
 
 struct HabitResponse: Decodable {
     
-    let id: String
+    let id: Int
     let name: String
     let label: String
     let iconUrl: String?

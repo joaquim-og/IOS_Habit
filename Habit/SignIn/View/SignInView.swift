@@ -86,12 +86,12 @@ extension SignInView {
 extension SignInView {
     var enterbutton: some View {
         HabitLoadingButtonView(
-            buttonText: "Entrar",
             action: {
                 viewModel.login()
             },
-            disabled: !viewModel.email.isEmail() || !viewModel.password.isTextValidLenght(minLenght: 5),
-            showProgressBar: self.viewModel.uiState == SignInUiState.loading
+            buttonText: "Entrar",
+            showProgress: !viewModel.email.isEmail() || !viewModel.password.isTextValidLenght(minLenght: 5),
+            disabled: self.viewModel.uiState == SignInUiState.loading
         )
     }
 }
