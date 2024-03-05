@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 enum HabitCardViewRouter {
     
@@ -14,7 +15,8 @@ enum HabitCardViewRouter {
         interactor: HabitDetailInteractor = HabitDetailInteractor(),
         id: Int,
         name: String,
-        label: String
+        label: String,
+        habitPublisher: PassthroughSubject<Bool, Never>?
     ) -> some View {
         let viewModel = HabitDetailsViewModel(
             interactor: interactor,
@@ -22,6 +24,7 @@ enum HabitCardViewRouter {
             name: name,
             label: label
         )
+        viewModel.habitPublisher = habitPublisher
         return HabitDetailView(viewModel: viewModel)
     }
     

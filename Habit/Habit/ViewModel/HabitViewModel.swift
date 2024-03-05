@@ -22,13 +22,22 @@ class HabitViewModel: ObservableObject {
     
     private let interactor: HabitInteractor
     private var habitCancellable: AnyCancellable?
-    
+    private var cancellabeNotify: AnyCancellable?
+    private let habitPublisher = PassthroughSubject<Bool, Never>()
+
     init(interactor: HabitInteractor){
         self.interactor = interactor
+        
+        cancellabeNotify = habitPublisher.sink(receiveValue: { valueSaved in
+            if (valueSaved) {
+                self.onAppear()
+            }
+        })
     }
     
     deinit {
         habitCancellable?.cancel()
+        cancellabeNotify?.cancel()
     }
         
     func onAppear() {
@@ -75,7 +84,7 @@ class HabitViewModel: ObservableObject {
                 self.description = "Você está atrasado nos hábitos"
             }
             
-            return $0.mapResponseToDomain(stateColor: stateColor)
+            return $0.mapResponseToDomain(stateColor: stateColor, habitPublisher: self.habitPublisher)
         }
         
     }

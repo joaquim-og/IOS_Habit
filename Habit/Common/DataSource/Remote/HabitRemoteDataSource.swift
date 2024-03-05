@@ -18,7 +18,7 @@ class HabitRemoteDataSource {
         
         return Future { promise in
             WebService.callJsonFormatWithoutBody(
-                path: WebService.Endpoint.habits,
+                pathEnum: WebService.Endpoint.habits,
                 method: WebService.RequestType.GET,
                 onComplete: { result in
                     switch result {

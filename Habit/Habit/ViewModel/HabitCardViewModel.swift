@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine  
 
 struct HabitCardViewModel: Identifiable, Equatable {
     
@@ -17,6 +18,8 @@ struct HabitCardViewModel: Identifiable, Equatable {
     var label: String = ""
     var value: String = ""
     var state: Color = .green
+    
+    var habitPublisher: PassthroughSubject<Bool, Never>?
     
     static func == (lhs: HabitCardViewModel, rhs: HabitCardViewModel) -> Bool {
         return lhs.id == rhs.id
@@ -29,7 +32,8 @@ extension HabitCardViewModel {
         return HabitCardViewRouter.makeHabitDetailView(
             id: id,
             name: name,
-            label: label
+            label: label,
+            habitPublisher: habitPublisher
         )
     }
 }

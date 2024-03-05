@@ -20,7 +20,7 @@ class SignUpRemoteDataSource {
         
         return Future { promise in
             WebService.callJsonFormat(
-                path: WebService.Endpoint.postUser,
+                pathEnum: WebService.Endpoint.postUser,
                 method: WebService.RequestType.POST,
                 body: request,
                 onComplete: { result in

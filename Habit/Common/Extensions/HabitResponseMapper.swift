@@ -7,12 +7,13 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 extension HabitResponse {
     
-    func mapResponseToDomain(stateColor: Color) -> HabitCardViewModel {
+    func mapResponseToDomain(stateColor: Color, habitPublisher: PassthroughSubject<Bool, Never>?) -> HabitCardViewModel {
         return HabitCardViewModel(
-            id: Int(self.id) ?? 0,
+            id: Int(self.id),
             icon: self.iconUrl ?? "",
             date: self.lastDate?.formatStringToPattern(
                 sourcePattern: Date.DatesPatterns.YYYYMMDDTHHMMSS,
@@ -21,7 +22,8 @@ extension HabitResponse {
             name: self.name,
             label: self.label,
             value: String(self.value ?? 0),
-            state: stateColor
+            state: stateColor,
+            habitPublisher: habitPublisher
         )
     }
     

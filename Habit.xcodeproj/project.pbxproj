@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		340AFC892B97A05900873C90 /* HabitCardViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340AFC882B97A05900873C90 /* HabitCardViewRouter.swift */; };
+		340AFC8B2B97AE3200873C90 /* HabitDetailsValueRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340AFC8A2B97AE3200873C90 /* HabitDetailsValueRequest.swift */; };
 		3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CC2AD49CC300144C0F /* SignInView.swift */; };
 		3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */; };
 		3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		340AFC882B97A05900873C90 /* HabitCardViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardViewRouter.swift; sourceTree = "<group>"; };
+		340AFC8A2B97AE3200873C90 /* HabitDetailsValueRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsValueRequest.swift; sourceTree = "<group>"; };
 		3414D6CC2AD49CC300144C0F /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewRouter.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				348BEB5B2B9672F2007DDF7A /* HabitDetailUiState.swift */,
+				340AFC8A2B97AE3200873C90 /* HabitDetailsValueRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				348BEB532B965FE9007DDF7A /* HabitInteractor.swift in Sources */,
 				3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */,
 				346F00712B7EA9160064448A /* HabitLoadingButtonView.swift in Sources */,
+				340AFC8B2B97AE3200873C90 /* HabitDetailsValueRequest.swift in Sources */,
 				34298C302B7D545B00821A1B /* HabitErrorAlert.swift in Sources */,
 				346AF11A2B8679C600AEFA42 /* SignInErrorResponse.swift in Sources */,
 				344FDD882AF04EEF00AEA99D /* HomeUiState.swift in Sources */,

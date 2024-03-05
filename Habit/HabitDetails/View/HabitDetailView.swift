@@ -15,7 +15,7 @@ struct HabitDetailView: View {
   init(viewModel: HabitDetailsViewModel) {
     self.viewModel = viewModel
   }
-  
+     
   var body: some View {
     ScrollView(showsIndicators: false) {
       
@@ -42,6 +42,7 @@ struct HabitDetailView: View {
       
         HabitLoadingButtonView(
         action: {
+            viewModel.saveHabitValue()
         },
         buttonText: "Salvar",
         showProgress: self.viewModel.uiState == .loading,

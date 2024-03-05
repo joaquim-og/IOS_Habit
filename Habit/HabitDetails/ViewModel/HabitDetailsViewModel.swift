@@ -12,7 +12,7 @@ import SwiftUI
 class HabitDetailsViewModel: ObservableObject {
     
     
-    @Published var uiState: HabitDetailUiState = .loading
+    @Published var uiState: HabitDetailUiState = .success
     @Published var value = ""
     
     let id: Int
@@ -20,6 +20,8 @@ class HabitDetailsViewModel: ObservableObject {
     let label: String
     
     private let interactor: HabitDetailInteractor
+    var habitPublisher: PassthroughSubject<Bool, Never>?
+    
     private var habitDetailCancellable: AnyCancellable?
     
     init(
@@ -38,29 +40,30 @@ class HabitDetailsViewModel: ObservableObject {
         habitDetailCancellable?.cancel()
     }
         
-    func onAppear() {
+    func saveHabitValue() {
         setLoadingState()
-//        habitCancellable = interactor.fetchHabits()
-//        .receive(on: DispatchQueue.main)
-//        .sink { onComplete in
-//            switch (onComplete) {
-//            case .failure(let appError):
-//                self.setErrorState(errorMessage: appError.message)
-//                break
-//            case .finished:
-//                break
-//            }
-//        } receiveValue: { successResponse in
-//            if successResponse.isEmpty {
-//                self.setFullListState(modelList: [])
-//                
-//                self.title = ""
-//                self.headline = "Fique ligado!"
-//                self.description = "Você ainda nào possui hábitos"
-//            } else {
-//                self.setFullListState(modelList: self.mapHabitResponseList(responseList: successResponse))
-//            }
-//        }
+        habitDetailCancellable = interactor.saveHabitValue(
+            habitId: id,
+            request: HabitDetailsValueRequest(value: value)
+        )
+        .receive(on: DispatchQueue.main)
+        .sink { onComplete in
+            switch (onComplete) {
+            case .failure(let appError):
+                self.setErrorState(errorMessage: appError.message)
+                break
+            case .finished:
+                break
+            }
+        } receiveValue: { successResponse in
+            if (successResponse) {
+                self.setSuccessState()
+                self.sendPublishserState(state: true)
+            } else {
+                self.setErrorState(errorMessage: "Não foi possível salvar agora, tente novamente mais tarde")
+                self.sendPublishserState(state: false)
+            }
+        }
     }
     
        
@@ -73,6 +76,12 @@ class HabitDetailsViewModel: ObservableObject {
     private func setSuccessState() {
         DispatchQueue.main.async {
             self.uiState = .success
+        }
+    }
+    
+    private func sendPublishserState(state: Bool) {
+        DispatchQueue.main.async {
+            self.habitPublisher?.send(state)
         }
     }
     

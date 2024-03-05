@@ -16,5 +16,8 @@ class HabitDetailInteractor {
 
 extension HabitDetailInteractor {
     
-   
+    func saveHabitValue(habitId: Int, request: HabitDetailsValueRequest) -> Future<Bool, AppError> {
+        return remoteDataSource.saveHabitValue(habitId: habitId, request: request)
+    }
+    
 }

@@ -17,7 +17,7 @@ class SplashRemoteDataSource {
         
         return Future<SignInResponse, AppError> { promise in
             WebService.callJsonFormat(
-                path: WebService.Endpoint.refreshToken,
+                pathEnum: WebService.Endpoint.refreshToken,
                 method: WebService.RequestType.PUT,
                 body: request,
                 onComplete: { result in
