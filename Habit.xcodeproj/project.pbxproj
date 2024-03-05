@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		340AFC892B97A05900873C90 /* HabitCardViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340AFC882B97A05900873C90 /* HabitCardViewRouter.swift */; };
 		340AFC8B2B97AE3200873C90 /* HabitDetailsValueRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340AFC8A2B97AE3200873C90 /* HabitDetailsValueRequest.swift */; };
+		340AFC8D2B97C4DA00873C90 /* HabitImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340AFC8C2B97C4DA00873C90 /* HabitImageView.swift */; };
 		3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CC2AD49CC300144C0F /* SignInView.swift */; };
 		3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */; };
 		3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		340AFC882B97A05900873C90 /* HabitCardViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardViewRouter.swift; sourceTree = "<group>"; };
 		340AFC8A2B97AE3200873C90 /* HabitDetailsValueRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsValueRequest.swift; sourceTree = "<group>"; };
+		340AFC8C2B97C4DA00873C90 /* HabitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitImageView.swift; sourceTree = "<group>"; };
 		3414D6CC2AD49CC300144C0F /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewRouter.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				34298C362B7E1D7700821A1B /* HabitSecureEditTextView.swift */,
 				346F00702B7EA9160064448A /* HabitLoadingButtonView.swift */,
 				346F00722B7EA9EE0064448A /* HabitTextsView.swift */,
+				340AFC8C2B97C4DA00873C90 /* HabitImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				344FDD812AF04E4900AEA99D /* SignInRouter.swift in Sources */,
 				346AF1142B853BFF00AEFA42 /* ErrorResponse.swift in Sources */,
 				343659042B8685320022FD96 /* SignInInteractor.swift in Sources */,
+				340AFC8D2B97C4DA00873C90 /* HabitImageView.swift in Sources */,
 				344FDD8D2AF04F5D00AEA99D /* HomeViewModel.swift in Sources */,
 				3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */,
 				344FDD9D2AF0593E00AEA99D /* SignUpView.swift in Sources */,

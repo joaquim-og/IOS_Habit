@@ -31,8 +31,15 @@ struct HabitCardView: View {
                     },
                     label: {
                         HStack{
-                            Image(systemName: "pencil")
-                                .padding(.horizontal, 8)
+                            if (viewModel.icon.isEmpty) {
+                                Image(systemName: "pencil")
+                                    .padding(.horizontal, 8)
+                            } else {
+                                HabitImageView(url: viewModel.icon)
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 32, height: 32)
+                                    .clipped()
+                            }
                             
                             Spacer()
                             
