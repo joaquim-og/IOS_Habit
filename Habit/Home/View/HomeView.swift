@@ -11,20 +11,30 @@ struct HomeView: View {
     
     @ObservedObject var viewModel: HomeViewModel
     
+    @State var selection = 0
+    
     var body: some View {
-        NavigationView {
-            ScrollView(showsIndicators: false) {
-                VStack(
-                    alignment: .center,
-                    spacing: 20,
-                    content: {
-                        HabitLogo()
-                        Spacer(minLength: 36)
-                        headerView
-                    }
-                )
-            }
+        TabView(selection: $selection) {
+            viewModel.habitView()
+                .tabItem {
+                    Image(systemName: "square.grid.2x2")
+                    Text("Hábitos")
+                }.tag(0)
+            
+            Text("Grafic stuff \(selection)")
+                .tabItem {
+                    Image(systemName: "chart.bar")
+                    Text("Gráficos")
+                }.tag(1)
+            
+            viewModel.profileView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Profile")
+                }.tag(2)
         }
+        .background(Color.white)
+        .accentColor(Color.orange)
     }
 }
 

@@ -2,12 +2,12 @@
 //  SignUpErrorResponse.swift
 //  Habit
 //
-//  Created by joaquim de oliveira gomes on 06/03/24.
+//  Created by joaquim de oliveira gomes on 21/02/24.
 //
 
 import Foundation
 
-struct SignUpErrorResponse: Decodable {
+struct ErrorResponse: Decodable {
     
     let detail: SignUpDetailErrorResponse?
     

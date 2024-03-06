@@ -10,15 +10,29 @@ import Foundation
 extension Date {
     
     enum DatesPatterns: String {
-        case DDMMYYYYPattern = "dd-MM-yyyy"
+        case DDMMYYYY = "dd-MM-yyyy"
+        case DDMMYYYYHHMM = "dd/MM/yyyy HH:mm"
         case YYYYMMDD = "yyyy-MM-dd"
+        case YYYYMMDDHHMM = "yyyy-MM-dd HH:mm"
+        case YYYYMMDDTHHMMSS = "yyyy-MM-dd'T'HH:mm:ss"
     }
     
-    func formatToPattern(pattern: DatesPatterns) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = pattern.rawValue
+    enum LocalIdentifier: String {
+        case ENUSPOSIX = "en_us_POSIX"
+    }
+    
+    func formatDateToString(pattern: DatesPatterns) -> String {
+        let dateFormatter = getDateFormatter(pattern: pattern)
         
         return dateFormatter.string(from: self)
     }
+        
+}
+
+func getDateFormatter(pattern: Date.DatesPatterns) -> DateFormatter {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: Date.LocalIdentifier.ENUSPOSIX.rawValue)
+    dateFormatter.dateFormat = pattern.rawValue
     
+    return dateFormatter
 }

@@ -6,12 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 
 class HomeViewModel: ObservableObject {
-    
-    
-    @Published var uiState: HomeUiState = .none
-    
+   let habitViewModel = HabitViewModel(interactor: HabitInteractor())
+   let profileViewModel = ProfileViewModel(interactor: ProfileInteractor())
+}
 
+extension HomeViewModel {
+    func habitView() -> some View {
+        return HomeViewRouter.makeHabitView(viewModel: habitViewModel)
+    }    
     
+    func profileView() -> some View {
+        return HomeViewRouter.makeProfileView(viewModel: profileViewModel)
+    }
 }

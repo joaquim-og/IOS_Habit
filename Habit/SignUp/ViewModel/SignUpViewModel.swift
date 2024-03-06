@@ -45,7 +45,7 @@ class SignUpViewModel: ObservableObject {
             password: password,
             document: document,
             phone:phone,
-            birthday: birthday.formatToPattern(pattern: Date.DatesPatterns.YYYYMMDD),
+            birthday: birthday.formatDateToString(pattern: Date.DatesPatterns.YYYYMMDD),
             gender: gender.index
         )
         

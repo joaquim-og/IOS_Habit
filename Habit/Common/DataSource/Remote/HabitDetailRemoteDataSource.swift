@@ -1,26 +1,25 @@
 //
-//  RemoteDataSource.swift
+//  HabitDetailRemoteDataSource.swift
 //  Habit
 //
-//  Created by joaquim de oliveira gomes on 21/02/24.
+//  Created by joaquim de oliveira gomes on 04/03/24.
 //
 
 import Foundation
 import Combine
 
-class SignUpRemoteDataSource {
+class HabitDetailRemoteDataSource {
     
-    static var signUpRemoteDataSourceShared = SignUpRemoteDataSource()
+    static var habitDetailRemoteDataSourceShared = HabitDetailRemoteDataSource()
     
-    func postUser(
-        request: SignUpRequest
-    ) -> Future<Bool, AppError> {
+    func saveHabitValue(habitId: Int, request: HabitDetailsValueRequest) -> Future<Bool, AppError> {
         
         let decoder = JSONDecoder()
+        let pathFormatted = WebService.buildPathString(path: WebService.Endpoint.habitsValues, idToUpdate: habitId)
         
         return Future { promise in
             WebService.callJsonFormat(
-                pathEnum: WebService.Endpoint.postUser,
+                pathString: pathFormatted,
                 method: WebService.RequestType.POST,
                 body: request,
                 onComplete: { result in

@@ -1,25 +1,25 @@
 //
-//  SplashRemoteDataSource.swift
+//  HabitRemoteDataSource.swift
 //  Habit
 //
-//  Created by joaquim de oliveira gomes on 23/02/24.
+//  Created by joaquim de oliveira gomes on 04/03/24.
 //
 
 import Foundation
 import Combine
 
-class SplashRemoteDataSource {
+class HabitRemoteDataSource {
     
-    static var splashRemoteDataSourceShared = SplashRemoteDataSource()
+    static var habitRemoteDataSourceShared = HabitRemoteDataSource()
     
-    func refreshToken(request: RefreshRequest) -> Future<SignInResponse, AppError> {
+    func fetchHabits() -> Future<[HabitResponse], AppError> {
+        
         let decoder = JSONDecoder()
         
-        return Future<SignInResponse, AppError> { promise in
-            WebService.callJsonFormat(
-                pathEnum: WebService.Endpoint.refreshToken,
-                method: WebService.RequestType.PUT,
-                body: request,
+        return Future { promise in
+            WebService.callJsonFormatWithoutBody(
+                pathEnum: WebService.Endpoint.habits,
+                method: WebService.RequestType.GET,
                 onComplete: { result in
                     switch result {
                     case .failure(let error, let data):
@@ -31,11 +31,14 @@ class SplashRemoteDataSource {
                         }
                         break
                     case .success(let data):
-                        let response = try? decoder.decode(SignInResponse.self, from: data)
+                        let response = try? decoder.decode([HabitResponse].self, from: data)
                         
-                        if let responseUnwrapped = response {
-                            promise(.success(responseUnwrapped))
+                        guard let responseToEmit = response else {
+                            debugPrint("Json Error parser response -> \(String(data: data, encoding: .utf8)!)")
+                            return
                         }
+                        
+                        promise(.success(responseToEmit))
                         break
                     }
                 }

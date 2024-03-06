@@ -12,8 +12,12 @@ enum WebService {
     enum Endpoint: String {
         case base = "https://habitplus-api.tiagoaguiar.co"
         case postUser = "/users"
+        case fetchUser = "/users/me"
+        case updateUser = "/users/%d"
         case login = "/auth/login"
         case refreshToken = "/auth/refresh-token"
+        case habits = "/users/me/habits"
+        case habitsValues = "/users/me/habits/%d/values"
     }
     
     enum RequestType: String {
@@ -39,13 +43,17 @@ enum WebService {
         case failure(NetworkError, Data?)
     }
     
-    private static func buildEndpointUrl(path: Endpoint) -> URLRequest? {
-        guard let url = URL(string: "\(Endpoint.base.rawValue)\(path.rawValue)") else { return nil }
+    private static func buildEndpointUrl(path: String) -> URLRequest? {
+        guard let url = URL(string: "\(Endpoint.base.rawValue)\(path)") else { return nil }
         return URLRequest(url: url)
+    }
+    
+    static func buildPathString(path: Endpoint, idToUpdate: Int) -> String {
+        return String(format: path.rawValue, idToUpdate)
     }
         
     private static func callApi(
-        path: Endpoint,
+        path: String,
         contentType: ContentType,
         method: RequestType,
         data: Data?,
@@ -93,14 +101,36 @@ enum WebService {
     }
     
     static func callJsonFormat<T: Encodable>(
-        path: Endpoint,
+        pathEnum: Endpoint? = nil,
+        pathString: String? = nil,
         method: RequestType,
         body: T,
         onComplete: @escaping (Result) -> Void
     ) {
         guard let jsonData = try? JSONEncoder().encode(body) else {return}
-               
-        callApi(path: path, contentType: ContentType.json, method: method, data: jsonData, onComplete: onComplete)
+              
+        if let pathEnum = pathEnum {
+            callApi(path: pathEnum.rawValue, contentType: ContentType.json, method: method, data: jsonData, onComplete: onComplete)
+        }
+        
+        if let pathString = pathString {
+            callApi(path: pathString, contentType: ContentType.json, method: method, data: jsonData, onComplete: onComplete)
+        }
+    }
+    
+    static func callJsonFormatWithoutBody(
+        pathEnum: Endpoint? = nil,
+        pathString: String? = nil,
+        method: RequestType,
+        onComplete: @escaping (Result) -> Void
+    ) {
+        if let pathEnum = pathEnum {
+            callApi(path: pathEnum.rawValue, contentType: ContentType.json, method: method, data: nil, onComplete: onComplete)
+        }
+        
+        if let pathString = pathString {
+            callApi(path: pathString, contentType: ContentType.json, method: method, data: nil, onComplete: onComplete)
+        }
     }
     
     static func callFormDataFormat(
@@ -109,7 +139,7 @@ enum WebService {
         params: [URLQueryItem],
         onComplete: @escaping (Result) -> Void
     ) {
-        guard let urlRequest = buildEndpointUrl(path: path) else {
+        guard let urlRequest = buildEndpointUrl(path: path.rawValue) else {
             return
         }
         
@@ -119,6 +149,6 @@ enum WebService {
         var components = URLComponents(string: absoluteUrl)
         components?.queryItems = params
                
-        callApi(path: path, contentType: ContentType.formUrl, method: method, data: components?.query?.data(using: .utf8), onComplete: onComplete)
+        callApi(path: path.rawValue, contentType: ContentType.formUrl, method: method, data: components?.query?.data(using: .utf8), onComplete: onComplete)
     }
 }

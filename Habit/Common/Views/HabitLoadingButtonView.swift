@@ -9,46 +9,47 @@ import SwiftUI
 
 struct HabitLoadingButtonView: View {
     
-    let buttonText: String
     var action: () -> Void
+    var buttonText: String
+    var showProgress: Bool = false
     var disabled: Bool = false
-    var showProgressBar: Bool = false
     
     var body: some View {
-        ZStack {
-            Button(action: {
-                action()
-            }, label: {
-                HabitTextBoldView(text: showProgressBar ? " ": buttonText)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .padding(.horizontal, 16)
-                    .background(disabled || showProgressBar ? Color("lightOrange"):Color.orange
-                    )
-                    .foregroundColor(.white)
-                    .cornerRadius(4.0)
-            }).disabled(disabled || showProgressBar)
-            
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle())
-                .opacity(showProgressBar ? 1 : 0)
-        }
+      ZStack {
+        Button(action: {
+          action()
+        }, label: {
+          Text(showProgress ? " " : buttonText)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 14)
+            .padding(.horizontal, 16)
+            .font(Font.system(.title3).bold())
+            .background(disabled ? Color("lightOrange") : Color.orange)
+            .foregroundColor(.white)
+            .cornerRadius(4.0)
+        }).disabled(disabled || showProgress)
+        
+        ProgressView()
+          .progressViewStyle(CircularProgressViewStyle())
+          .opacity(showProgress ? 1 : 0)
+      }
     }
-}
+  }
 
-struct HabitLoadingButtonViewPreviews: PreviewProvider {
+  struct HabitLoadingButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-            VStack {
-                HabitLoadingButtonView(
-                    buttonText: "Xablau",
-                    action:{
-                        debugPrint("Xablau o botão clicado")
-                    }
-                )
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .preferredColorScheme(colorScheme)
-        }
+      ForEach(ColorScheme.allCases, id: \.self) {
+        VStack {
+            HabitLoadingButtonView(action: {
+            print("Xablau")
+          },
+          buttonText: "Entrar",
+          showProgress: false,
+          disabled: false)
+        }.padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .preferredColorScheme($0)
+      }
+      
     }
-}
+  }
