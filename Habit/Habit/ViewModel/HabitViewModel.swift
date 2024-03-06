@@ -24,7 +24,7 @@ class HabitViewModel: ObservableObject {
     private var habitCancellable: AnyCancellable?
     private var cancellabeNotify: AnyCancellable?
     private let habitPublisher = PassthroughSubject<Bool, Never>()
-
+    
     init(interactor: HabitInteractor){
         self.interactor = interactor
         
@@ -39,31 +39,31 @@ class HabitViewModel: ObservableObject {
         habitCancellable?.cancel()
         cancellabeNotify?.cancel()
     }
-        
+    
     func onAppear() {
         setLoadingState()
         self.opened = true
         habitCancellable = interactor.fetchHabits()
-        .receive(on: DispatchQueue.main)
-        .sink { onComplete in
-            switch (onComplete) {
-            case .failure(let appError):
-                self.setErrorState(errorMessage: appError.message)
-                break
-            case .finished:
-                break
+            .receive(on: DispatchQueue.main)
+            .sink { onComplete in
+                switch (onComplete) {
+                case .failure(let appError):
+                    self.setErrorState(errorMessage: appError.message)
+                    break
+                case .finished:
+                    break
+                }
+            } receiveValue: { successResponse in
+                if successResponse.isEmpty {
+                    self.setFullListState(modelList: [])
+                    
+                    self.title = ""
+                    self.headline = "Fique ligado!"
+                    self.description = "Você ainda nào possui hábitos"
+                } else {
+                    self.setFullListState(modelList: self.mapHabitResponseList(responseList: successResponse))
+                }
             }
-        } receiveValue: { successResponse in
-            if successResponse.isEmpty {
-                self.setFullListState(modelList: [])
-                
-                self.title = ""
-                self.headline = "Fique ligado!"
-                self.description = "Você ainda nào possui hábitos"
-            } else {
-                self.setFullListState(modelList: self.mapHabitResponseList(responseList: successResponse))
-            }
-        }
     }
     
     private func mapHabitResponseList(responseList: [HabitResponse]) -> [HabitCardViewModel] {
