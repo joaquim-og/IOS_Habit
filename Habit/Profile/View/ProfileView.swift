@@ -11,7 +11,6 @@ struct ProfileView: View {
     
     @ObservedObject var viewModel: ProfileViewModel
     
-    //TODO: (criar a lista de profiles)
     var body: some View {
         NavigationView {
             VStack {
@@ -38,12 +37,17 @@ struct ProfileView: View {
 
 extension ProfileView {
     var userNameField: some View {
-        HStack {
-            Text("Name")
-            Spacer()
-            TextField("Tap your name", text: $viewModel.userName)
-                .keyboardType(.numberPad)
-                .multilineTextAlignment(.trailing)
+        VStack{
+            HStack {
+                Text("Name")
+                Spacer()
+                TextField("Tap your name", text: $viewModel.userName)
+                    .keyboardType(.numberPad)
+                    .multilineTextAlignment(.trailing)
+            }
+            if (!viewModel.userName.isTextValidLenght(minLenght: 5)) {
+                Text("Invalid Name").foregroundColor(.red).multilineTextAlignment(.trailing)
+            }
         }
     }
 }
@@ -76,12 +80,17 @@ extension ProfileView {
 
 extension ProfileView {
     var userPhoneField: some View {
-        HStack {
-            Text("Phone")
-            Spacer()
-            TextField("Tap your phone", text: $viewModel.userPhone)
-                .keyboardType(.alphabet)
-                .multilineTextAlignment(.trailing)
+        VStack {
+            HStack {
+                Text("Phone")
+                Spacer()
+                TextField("Tap your phone", text: $viewModel.userPhone)
+                    .keyboardType(.alphabet)
+                    .multilineTextAlignment(.trailing)
+            }
+            if (!viewModel.userPhone.isTextValidLenght(minLenght: 5)) {
+                Text("Invalid Phone").foregroundColor(.red).multilineTextAlignment(.trailing)
+            }
         }
     }
 }
