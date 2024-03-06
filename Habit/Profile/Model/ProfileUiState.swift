@@ -12,4 +12,7 @@ enum ProfileUiState: Equatable {
     case none
     case success
     case error(String)
+    case updateLoading
+    case updateSuccess
+    case updateError(String)
 }

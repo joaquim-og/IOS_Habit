@@ -11,27 +11,115 @@ struct ProfileView: View {
     
     @ObservedObject var viewModel: ProfileViewModel
     
+    var disableDone: Bool {
+        !viewModel.userName.isTextValidLenght(minLenght: 5) ||
+        !viewModel.userPhone.isTextValidLenght(minLenght: 5)
+    }
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    Section(
-                        header: Text("User Data"),
-                        content: {
-                            userNameField
-                            userEmailField
-                            userDocumentField
-                            userPhoneField
-                            userDOBField
-                            userGenderField
+        ZStack {
+            if case ProfileUiState.loading = viewModel.uiState {
+                progressView
+            } else {
+                NavigationView {
+                    VStack {
+                        Form {
+                            Section(
+                                header: Text("User Data"),
+                                content: {
+                                    userNameField
+                                    userEmailField
+                                    userDocumentField
+                                    userPhoneField
+                                    userDOBField
+                                    userGenderField
+                                }
+                            )
                         }
+                    }
+                    .navigationBarTitle(
+                        Text("Edit profile"),
+                        displayMode: .automatic
+                    )
+                    .navigationBarItems(
+                        trailing:
+                            Button(
+                                action: {
+                                    viewModel.updateUserProfileData()
+                                },
+                                label: {
+                                    if case ProfileUiState.updateLoading = viewModel.uiState {
+                                        progressView
+                                    } else {
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(Color.orange)
+                                    }
+                                }
+                            )
+                            .opacity(disableDone ? 0 : 1)
+                            .alert(
+                                isPresented:
+                                        .constant(viewModel.uiState == .updateSuccess),
+                                content: {
+                                    Alert(
+                                        title: Text("Habit"),
+                                        message: Text("Profile successfuly updated"),
+                                        dismissButton: .default(
+                                            Text("Ok"),
+                                            action: {
+                                                viewModel.setUpdateState(state: .none)
+                                            }
+                                        )
+                                    )
+                                }
+                            )
                     )
                 }
-            }.navigationBarTitle(
-                Text("Edit profile"),
-                displayMode: .automatic
-            )
+            }
+            
+            if case ProfileUiState.error(let msg) = viewModel.uiState {
+                Text("")
+                    .alert(
+                        isPresented: .constant(true),
+                        content: {
+                            Alert(
+                                title: Text("Ops \(msg)"),
+                                message: Text("Tentar novamente?"),
+                                primaryButton: .default(Text("Sim")) {
+                                    viewModel.getUserProfileData()
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        }
+                    )
+            }
+            
+            if case ProfileUiState.updateError(let msg) = viewModel.uiState {
+                Text("")
+                    .alert(
+                        isPresented: .constant(true),
+                        content: {
+                            Alert(
+                                title: Text("Ops \(msg)"),
+                                message: Text("Tentar novamente?"),
+                                primaryButton: .default(Text("Sim")) {
+                                    viewModel.updateUserProfileData()
+                                },
+                                secondaryButton: .cancel()
+                            )
+                        }
+                    )
+            }
+            
+        }.onAppear {
+            viewModel.getUserProfileData()
         }
+    }
+}
+
+extension ProfileView {
+    var progressView: some View {
+        ProgressView()
     }
 }
 

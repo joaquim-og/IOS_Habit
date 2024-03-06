@@ -12,17 +12,19 @@ import SwiftUI
 class ProfileViewModel: ObservableObject {
     
     
-    @Published var uiState: ProfileUiState = .success
+    @Published var uiState: ProfileUiState = .loading
     @Published var userName = ""
-    @Published var userEmail = "xablau@xablaueixonserver.com"
-    @Published var userDocument = "123456798"
-    @Published var userPhone = "987654321"
+    @Published var userEmail = ""
+    @Published var userDocument = ""
+    @Published var userPhone = ""
     @Published var userBirthday = Date()
-    @Published var userGender: Gender? = nil
-
+    @Published var userGender: Gender?
+    
+    private var userId: Int?
     
     private let interactor: ProfileInteractor
-    private var profileCancellable: AnyCancellable?
+    private var getUserCancellable: AnyCancellable?
+    private var updateUserCancellable: AnyCancellable?
     
     init(
         interactor: ProfileInteractor
@@ -31,32 +33,70 @@ class ProfileViewModel: ObservableObject {
     }
     
     deinit {
-        profileCancellable?.cancel()
+        getUserCancellable?.cancel()
+        updateUserCancellable?.cancel()
     }
     
     func getUserProfileData() {
         setLoadingState()
-        //        habitDetailCancellable = interactor.saveHabitValue(
-        //            habitId: id,
-        //            request: HabitDetailsValueRequest(value: value)
-        //        )
-        //        .receive(on: DispatchQueue.main)
-        //        .sink { onComplete in
-        //            switch (onComplete) {
-        //            case .failure(let appError):
-        //                self.setErrorState(errorMessage: appError.message)
-        //                break
-        //            case .finished:
-        //                break
-        //            }
-        //        } receiveValue: { successResponse in
-        //            if (successResponse) {
-        //                self.setSuccessState()
-        //            } else {
-        //                self.setErrorState(errorMessage: "Não foi possível salvar agora, tente novamente mais tarde")
-        //                self.sendPublishserState(state: false)
-        //            }
-        //        }
+        getUserCancellable = interactor.fetchUser()
+            .receive(on: DispatchQueue.main)
+            .sink { onComplete in
+                switch (onComplete) {
+                case .failure(let appError):
+                    self.setErrorState(errorMessage: appError.message)
+                    break
+                case .finished:
+                    break
+                }
+            } receiveValue: { successResponse in
+                self.mapUserData(successResponse: successResponse)
+                self.setSuccessState()
+            }
+    }
+    
+    func updateUserProfileData() {
+        setUpdateState(state: .updateLoading)
+        
+        guard let userIdToRequest = userId,
+              let genderToRequest = userGender 
+        else {
+            self.setUpdateErrorState(errorMessage: "Something went wrong :(")
+            return
+        }
+        
+        let request = ProfileRequest(
+            fullName: userName,
+            phone: userPhone,
+            birthday: userBirthday.formatDateToString(pattern: Date.DatesPatterns.YYYYMMDD),
+            gender: genderToRequest.index
+        )
+        
+        updateUserCancellable = interactor.updateUser(userId: userIdToRequest, request: request)
+            .receive(on: DispatchQueue.main)
+            .sink { onComplete in
+                switch (onComplete) {
+                case .failure(let appError):
+                    self.setUpdateErrorState(errorMessage: appError.message)
+                    break
+                case .finished:
+                    break
+                }
+            } receiveValue: { successResponse in
+                self.mapUserData(successResponse: successResponse)
+                self.setUpdateState(state: .updateSuccess)
+            }
+    }
+    
+    private func mapUserData(successResponse: ProfileResponse) {
+        userId = successResponse.id
+        userName = successResponse.fullName
+        userEmail = successResponse.email
+        userDocument = successResponse.document
+        userPhone = successResponse.phone
+        userBirthday = successResponse.birthday.formatStringToDate(sourcePattern: Date.DatesPatterns.YYYYMMDD) ?? Date()
+        userGender = Gender.allCases[successResponse.gender]
+        
     }
     
     
@@ -69,6 +109,18 @@ class ProfileViewModel: ObservableObject {
     private func setSuccessState() {
         DispatchQueue.main.async {
             self.uiState = .success
+        }
+    }
+    
+    func setUpdateState(state: ProfileUiState) {
+        DispatchQueue.main.async {
+            self.uiState = state
+        }
+    }
+    
+    private func setUpdateErrorState(errorMessage: String) {
+        DispatchQueue.main.async {
+            self.uiState = .updateError(errorMessage)
         }
     }
     

@@ -15,8 +15,12 @@ class ProfileInteractor {
 
 extension ProfileInteractor {
     
-//    func saveHabitValue(habitId: Int, request: HabitDetailsValueRequest) -> Future<Bool, AppError> {
-//        return remoteDataSource.saveHabitValue(habitId: habitId, request: request)
-//    }
+    func fetchUser() -> Future<ProfileResponse, AppError> {
+        return remoteDataSource.fetchUser()
+    }
+    
+    func updateUser(userId: Int, request: ProfileRequest) -> Future<ProfileResponse, AppError> {
+        return remoteDataSource.updateUser(userId: userId, request: request)
+    }
     
 }
