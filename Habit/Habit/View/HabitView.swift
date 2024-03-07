@@ -21,8 +21,11 @@ struct HabitView: View {
                         showsIndicators: false,
                         content: {
                             VStack(spacing: 12) {
-                                topContainer
-                                addButton
+                                
+                                if (!viewModel.isCharts){
+                                    topContainer
+                                    addButton
+                                }
                                 
                                 if case HabitUiState.emptyList = viewModel.uiState {
                                     Spacer(minLength: 60)
@@ -31,7 +34,10 @@ struct HabitView: View {
                                     
                                     LazyVStack {
                                         ForEach(rows) { row in
-                                            HabitCardView.init(viewModel: row)
+                                            HabitCardView.init(
+                                                isChart: viewModel.isCharts,
+                                                viewModel: row
+                                            )
                                         }
                                     }.padding(.horizontal, 14)
                                     
@@ -136,7 +142,7 @@ extension HabitView {
 
 struct HabitView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = HabitViewModel(interactor: HabitInteractor())
+        let viewModel = HabitViewModel(isCharts: false, interactor: HabitInteractor())
         
         HabitView(viewModel: viewModel)
     }

@@ -11,19 +11,31 @@ struct HabitCardView: View {
     
     @State private var action = false
     
+    let isChart: Bool
     let viewModel: HabitCardViewModel
     
     var body: some View {
         ZStack(
             alignment: .trailing,
             content: {
-                NavigationLink(
-                    destination: viewModel.habitDetailView(),
-                    isActive: self.$action,
-                    label: {
-                        EmptyView()
-                    }
-                )
+                
+                if (isChart){
+                    NavigationLink(
+                        destination: viewModel.chartView(),
+                        isActive: self.$action,
+                        label: {
+                            EmptyView()
+                        }
+                    )
+                } else {
+                    NavigationLink(
+                        destination: viewModel.habitDetailView(),
+                        isActive: self.$action,
+                        label: {
+                            EmptyView()
+                        }
+                    )
+                }
                 
                 Button (
                     action: {
@@ -93,10 +105,11 @@ struct HabitCardView: View {
                     }
                 )
                 
-                Rectangle()
-                    .frame(width: 8)
-                    .foregroundColor(viewModel.state)
-                
+                if (!isChart) {
+                    Rectangle()
+                        .frame(width: 8)
+                        .foregroundColor(viewModel.state)
+                }
             }
         ).background(
             RoundedRectangle(cornerRadius: 4.0)
@@ -124,8 +137,8 @@ struct HabitCardView_Previews: PreviewProvider {
             
             NavigationView {
                 List {
-                    HabitCardView(viewModel: model)
-                    HabitCardView(viewModel: model)
+                    HabitCardView(isChart: false, viewModel: model)
+                    HabitCardView(isChart: true, viewModel: model)
                 }
                 .frame(maxWidth: .infinity)
                 .navigationTitle("TEste")
