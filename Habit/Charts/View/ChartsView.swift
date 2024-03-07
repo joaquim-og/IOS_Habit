@@ -6,21 +6,28 @@
 //
 
 import SwiftUI
-import Charts
 
 struct ChartsView: View {
     
-    @State var habitId: Int
+    @ObservedObject var viewModel: ChartsViewModel
     
     var body: some View {
-        Text("XAblau aqui o habitId -> \(habitId)")
+        VStack {
+            BoxChartView(
+                chartEntries: $viewModel.entries,
+                dates: $viewModel.dates
+            )
+            .frame(maxWidth: .infinity, maxHeight: 350)
+        }
     }
 }
 
 struct PChartsView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) {
-            ChartsView(habitId: 1)
+            ChartsView(
+                viewModel: ChartsViewModel(interactor: ChartsInteractor(), habitId: 1)
+            )
             .preferredColorScheme($0)
         }
     }

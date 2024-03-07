@@ -19,6 +19,8 @@
 		340E8FFF2B9A4E07001C58BD /* ChartsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E8FFE2B9A4E07001C58BD /* ChartsRemoteDataSource.swift */; };
 		340E90012B9A4E67001C58BD /* ChartsUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E90002B9A4E67001C58BD /* ChartsUiState.swift */; };
 		340E90052B9A4EE1001C58BD /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E90042B9A4EE1001C58BD /* ChartsView.swift */; };
+		340E90072B9A6061001C58BD /* ChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E90062B9A6061001C58BD /* ChartsViewModel.swift */; };
+		340E90092B9A61CF001C58BD /* BoxChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E90082B9A61CF001C58BD /* BoxChartView.swift */; };
 		3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CC2AD49CC300144C0F /* SignInView.swift */; };
 		3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */; };
 		3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */; };
@@ -100,6 +102,8 @@
 		340E8FFE2B9A4E07001C58BD /* ChartsRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsRemoteDataSource.swift; sourceTree = "<group>"; };
 		340E90002B9A4E67001C58BD /* ChartsUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsUiState.swift; sourceTree = "<group>"; };
 		340E90042B9A4EE1001C58BD /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
+		340E90062B9A6061001C58BD /* ChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModel.swift; sourceTree = "<group>"; };
+		340E90082B9A61CF001C58BD /* BoxChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxChartView.swift; sourceTree = "<group>"; };
 		3414D6CC2AD49CC300144C0F /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewRouter.swift; sourceTree = "<group>"; };
@@ -248,6 +252,7 @@
 		340E8FF82B9A4DAC001C58BD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				340E90062B9A6061001C58BD /* ChartsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				340E90042B9A4EE1001C58BD /* ChartsView.swift */,
+				340E90082B9A61CF001C58BD /* BoxChartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -848,6 +854,7 @@
 				346AF1162B8635A200AEFA42 /* SignInRequest.swift in Sources */,
 				3471364C2B990930009AB1F1 /* IntExtensions.swift in Sources */,
 				348BEB532B965FE9007DDF7A /* HabitInteractor.swift in Sources */,
+				340E90092B9A61CF001C58BD /* BoxChartView.swift in Sources */,
 				3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */,
 				346F00712B7EA9160064448A /* HabitLoadingButtonView.swift in Sources */,
 				340AFC8B2B97AE3200873C90 /* HabitDetailsValueRequest.swift in Sources */,
@@ -882,6 +889,7 @@
 				340AFC8D2B97C4DA00873C90 /* HabitImageView.swift in Sources */,
 				344FDD8D2AF04F5D00AEA99D /* HomeViewModel.swift in Sources */,
 				3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */,
+				340E90072B9A6061001C58BD /* ChartsViewModel.swift in Sources */,
 				340E8FFF2B9A4E07001C58BD /* ChartsRemoteDataSource.swift in Sources */,
 				344FDD9D2AF0593E00AEA99D /* SignUpView.swift in Sources */,
 				3493E6032B87D26800DDBA7F /* LocalDataSource.swift in Sources */,
