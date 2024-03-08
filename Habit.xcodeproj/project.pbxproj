@@ -15,6 +15,12 @@
 		340AFC982B97CC9B00873C90 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340AFC972B97CC9B00873C90 /* ProfileViewModel.swift */; };
 		340AFC9A2B97CCCB00873C90 /* ProfileUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340AFC992B97CCCB00873C90 /* ProfileUiState.swift */; };
 		340AFC9C2B97CD4D00873C90 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340AFC9B2B97CD4D00873C90 /* ProfileView.swift */; };
+		340E8FFD2B9A4DE9001C58BD /* ChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E8FFC2B9A4DE9001C58BD /* ChartsInteractor.swift */; };
+		340E8FFF2B9A4E07001C58BD /* ChartsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E8FFE2B9A4E07001C58BD /* ChartsRemoteDataSource.swift */; };
+		340E90012B9A4E67001C58BD /* ChartsUiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E90002B9A4E67001C58BD /* ChartsUiState.swift */; };
+		340E90052B9A4EE1001C58BD /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E90042B9A4EE1001C58BD /* ChartsView.swift */; };
+		340E90072B9A6061001C58BD /* ChartsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E90062B9A6061001C58BD /* ChartsViewModel.swift */; };
+		340E90092B9A61CF001C58BD /* BoxChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340E90082B9A61CF001C58BD /* BoxChartView.swift */; };
 		3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CC2AD49CC300144C0F /* SignInView.swift */; };
 		3414D6CF2AD49D1600144C0F /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */; };
 		3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */; };
@@ -63,6 +69,7 @@
 		3471364C2B990930009AB1F1 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3471364B2B990930009AB1F1 /* IntExtensions.swift */; };
 		3471364E2B990C79009AB1F1 /* SignUpErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3471364D2B990C79009AB1F1 /* SignUpErrorResponse.swift */; };
 		347136502B9913BA009AB1F1 /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3471364F2B9913BA009AB1F1 /* ProfileRequest.swift */; };
+		348677432B9B95830021BC96 /* HabitValueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348677422B9B95830021BC96 /* HabitValueResponse.swift */; };
 		348BEB4E2B965C9F007DDF7A /* HabitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB4D2B965C9F007DDF7A /* HabitResponse.swift */; };
 		348BEB512B965DDF007DDF7A /* HabitRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB502B965DDF007DDF7A /* HabitRemoteDataSource.swift */; };
 		348BEB532B965FE9007DDF7A /* HabitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB522B965FE9007DDF7A /* HabitInteractor.swift */; };
@@ -79,9 +86,11 @@
 		34A109682B7FED64003E2490 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A109672B7FED64003E2490 /* WebService.swift */; };
 		34A1096A2B7FF4AB003E2490 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A109692B7FF4AB003E2490 /* DateExtensions.swift */; };
 		34B81D8D29F9E5C90054E838 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B81D8C29F9E5C90054E838 /* SplashViewModel.swift */; };
+		FA0DA4C7E90C6C67A71D61A1 /* Pods_Habit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C19AA295F647E5A667D6322 /* Pods_Habit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CECD505DB3FADA1D4BD0403 /* Pods-Habit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit.release.xcconfig"; path = "Target Support Files/Pods-Habit/Pods-Habit.release.xcconfig"; sourceTree = "<group>"; };
 		340AFC882B97A05900873C90 /* HabitCardViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardViewRouter.swift; sourceTree = "<group>"; };
 		340AFC8A2B97AE3200873C90 /* HabitDetailsValueRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsValueRequest.swift; sourceTree = "<group>"; };
 		340AFC8C2B97C4DA00873C90 /* HabitImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitImageView.swift; sourceTree = "<group>"; };
@@ -90,6 +99,12 @@
 		340AFC972B97CC9B00873C90 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		340AFC992B97CCCB00873C90 /* ProfileUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUiState.swift; sourceTree = "<group>"; };
 		340AFC9B2B97CD4D00873C90 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		340E8FFC2B9A4DE9001C58BD /* ChartsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsInteractor.swift; sourceTree = "<group>"; };
+		340E8FFE2B9A4E07001C58BD /* ChartsRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsRemoteDataSource.swift; sourceTree = "<group>"; };
+		340E90002B9A4E67001C58BD /* ChartsUiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsUiState.swift; sourceTree = "<group>"; };
+		340E90042B9A4EE1001C58BD /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
+		340E90062B9A6061001C58BD /* ChartsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewModel.swift; sourceTree = "<group>"; };
+		340E90082B9A61CF001C58BD /* BoxChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxChartView.swift; sourceTree = "<group>"; };
 		3414D6CC2AD49CC300144C0F /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		3414D6CE2AD49D1600144C0F /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		3414D6D02AD49DA600144C0F /* SplashViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewRouter.swift; sourceTree = "<group>"; };
@@ -139,6 +154,7 @@
 		3471364B2B990930009AB1F1 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
 		3471364D2B990C79009AB1F1 /* SignUpErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpErrorResponse.swift; sourceTree = "<group>"; };
 		3471364F2B9913BA009AB1F1 /* ProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequest.swift; sourceTree = "<group>"; };
+		348677422B9B95830021BC96 /* HabitValueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitValueResponse.swift; sourceTree = "<group>"; };
 		348BEB4D2B965C9F007DDF7A /* HabitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitResponse.swift; sourceTree = "<group>"; };
 		348BEB502B965DDF007DDF7A /* HabitRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRemoteDataSource.swift; sourceTree = "<group>"; };
 		348BEB522B965FE9007DDF7A /* HabitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInteractor.swift; sourceTree = "<group>"; };
@@ -155,6 +171,8 @@
 		34A109672B7FED64003E2490 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		34A109692B7FF4AB003E2490 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		34B81D8C29F9E5C90054E838 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		4C19AA295F647E5A667D6322 /* Pods_Habit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6935AB27DA333E2D34F12B61 /* Pods-Habit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habit.debug.xcconfig"; path = "Target Support Files/Pods-Habit/Pods-Habit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0DA4C7E90C6C67A71D61A1 /* Pods_Habit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +230,51 @@
 				340AFC952B97CC6B00873C90 /* ProfileInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		340E8FF62B9A4DA1001C58BD /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				340E8FFB2B9A4DC9001C58BD /* View */,
+				340E8FF92B9A4DB9001C58BD /* Interactor */,
+				340E8FF82B9A4DAC001C58BD /* ViewModel */,
+				340E8FF72B9A4DA8001C58BD /* Model */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
+		340E8FF72B9A4DA8001C58BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				340E90002B9A4E67001C58BD /* ChartsUiState.swift */,
+				348677422B9B95830021BC96 /* HabitValueResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		340E8FF82B9A4DAC001C58BD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				340E90062B9A6061001C58BD /* ChartsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		340E8FF92B9A4DB9001C58BD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				340E8FFC2B9A4DE9001C58BD /* ChartsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		340E8FFB2B9A4DC9001C58BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				340E90042B9A4EE1001C58BD /* ChartsView.swift */,
+				340E90082B9A61CF001C58BD /* BoxChartView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3414D6C82AD49C6A00144C0F /* SignIn */ = {
@@ -291,6 +355,8 @@
 			children = (
 				3431445729CBAD3500AA31D5 /* Habit */,
 				3431445629CBAD3500AA31D5 /* Products */,
+				9AB4BAB2D9AA64F34D8E5EEA /* Pods */,
+				6C67AA75404CB1430FA937FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -305,6 +371,7 @@
 		3431445729CBAD3500AA31D5 /* Habit */ = {
 			isa = PBXGroup;
 			children = (
+				340E8FF62B9A4DA1001C58BD /* Charts */,
 				340AFC8E2B97CBD900873C90 /* Profile */,
 				348BEB562B96729C007DDF7A /* HabitDetails */,
 				346604DA2B8E794800D3452D /* Habit */,
@@ -635,6 +702,7 @@
 				3427C8092B8924710089A37F /* SplashRemoteDataSource.swift */,
 				348BEB622B9673DE007DDF7A /* HabitDetailRemoteDataSource.swift */,
 				340AFC932B97CC3500873C90 /* ProfileRemoteDataSource.swift */,
+				340E8FFE2B9A4E07001C58BD /* ChartsRemoteDataSource.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -647,6 +715,23 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		6C67AA75404CB1430FA937FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C19AA295F647E5A667D6322 /* Pods_Habit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9AB4BAB2D9AA64F34D8E5EEA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6935AB27DA333E2D34F12B61 /* Pods-Habit.debug.xcconfig */,
+				2CECD505DB3FADA1D4BD0403 /* Pods-Habit.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -654,9 +739,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3431446329CBAD3600AA31D5 /* Build configuration list for PBXNativeTarget "Habit" */;
 			buildPhases = (
+				E7AADB0489256A636D6F64E4 /* [CP] Check Pods Manifest.lock */,
 				3431445129CBAD3500AA31D5 /* Sources */,
 				3431445229CBAD3500AA31D5 /* Frameworks */,
 				3431445329CBAD3500AA31D5 /* Resources */,
+				2E53C4C27CE741B0F067B280 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -712,6 +799,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E53C4C27CE741B0F067B280 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Habit/Pods-Habit-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Habit/Pods-Habit-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habit/Pods-Habit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7AADB0489256A636D6F64E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3431445129CBAD3500AA31D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -728,12 +857,14 @@
 				346AF1162B8635A200AEFA42 /* SignInRequest.swift in Sources */,
 				3471364C2B990930009AB1F1 /* IntExtensions.swift in Sources */,
 				348BEB532B965FE9007DDF7A /* HabitInteractor.swift in Sources */,
+				340E90092B9A61CF001C58BD /* BoxChartView.swift in Sources */,
 				3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */,
 				346F00712B7EA9160064448A /* HabitLoadingButtonView.swift in Sources */,
 				340AFC8B2B97AE3200873C90 /* HabitDetailsValueRequest.swift in Sources */,
 				34298C302B7D545B00821A1B /* HabitErrorAlert.swift in Sources */,
 				346AF11A2B8679C600AEFA42 /* SignInErrorResponse.swift in Sources */,
 				340AFC982B97CC9B00873C90 /* ProfileViewModel.swift in Sources */,
+				340E90052B9A4EE1001C58BD /* ChartsView.swift in Sources */,
 				344FDD882AF04EEF00AEA99D /* HomeUiState.swift in Sources */,
 				3493E6062B87DFEA00DDBA7F /* SplashInteractor.swift in Sources */,
 				348BEB5F2B967341007DDF7A /* HabitDetailsViewModel.swift in Sources */,
@@ -755,11 +886,15 @@
 				346AF1102B852B8400AEFA42 /* SignUpRequest.swift in Sources */,
 				344FDD812AF04E4900AEA99D /* SignInRouter.swift in Sources */,
 				346AF1142B853BFF00AEFA42 /* ErrorResponse.swift in Sources */,
+				340E90012B9A4E67001C58BD /* ChartsUiState.swift in Sources */,
 				340AFC962B97CC6B00873C90 /* ProfileInteractor.swift in Sources */,
 				343659042B8685320022FD96 /* SignInInteractor.swift in Sources */,
 				340AFC8D2B97C4DA00873C90 /* HabitImageView.swift in Sources */,
 				344FDD8D2AF04F5D00AEA99D /* HomeViewModel.swift in Sources */,
 				3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */,
+				340E90072B9A6061001C58BD /* ChartsViewModel.swift in Sources */,
+				348677432B9B95830021BC96 /* HabitValueResponse.swift in Sources */,
+				340E8FFF2B9A4E07001C58BD /* ChartsRemoteDataSource.swift in Sources */,
 				344FDD9D2AF0593E00AEA99D /* SignUpView.swift in Sources */,
 				3493E6032B87D26800DDBA7F /* LocalDataSource.swift in Sources */,
 				348BEB612B9673AE007DDF7A /* HabitDetailInteractor.swift in Sources */,
@@ -773,6 +908,7 @@
 				343659082B868AE40022FD96 /* AppError.swift in Sources */,
 				34298C322B7D631500821A1B /* HabitEditTextView.swift in Sources */,
 				343685182AF04705003414EF /* SignInUiState.swift in Sources */,
+				340E8FFD2B9A4DE9001C58BD /* ChartsInteractor.swift in Sources */,
 				3493E5FF2B87D13700DDBA7F /* UserAuth.swift in Sources */,
 				3427C8082B8921670089A37F /* RefreshRequest.swift in Sources */,
 				3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */,
@@ -830,7 +966,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -892,7 +1028,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -913,6 +1049,7 @@
 		};
 		3431446429CBAD3600AA31D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6935AB27DA333E2D34F12B61 /* Pods-Habit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -943,6 +1080,7 @@
 		};
 		3431446529CBAD3600AA31D5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CECD505DB3FADA1D4BD0403 /* Pods-Habit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

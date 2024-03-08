@@ -10,6 +10,7 @@ import Foundation
 extension Date {
     
     enum DatesPatterns: String {
+        case DDMM = "dd/MM"
         case DDMMYYYY = "dd-MM-yyyy"
         case DDMMYYYYHHMM = "dd/MM/yyyy HH:mm"
         case YYYYMMDD = "yyyy-MM-dd"
