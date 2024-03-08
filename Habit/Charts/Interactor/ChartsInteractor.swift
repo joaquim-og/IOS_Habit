@@ -15,8 +15,8 @@ class ChartsInteractor {
 
 extension ChartsInteractor {
     
-//    func fetchUser() -> Future<ProfileResponse, AppError> {
-//        return remoteDataSource.fetchUser()
-//    }
+    func fetchHabitValue(habitId: Int) -> Future<[HabitValueResponse], AppError> {
+        return remoteDataSource.fetchHabitValue(habitId: habitId)
+    }
     
 }

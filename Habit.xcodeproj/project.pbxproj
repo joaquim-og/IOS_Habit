@@ -69,6 +69,7 @@
 		3471364C2B990930009AB1F1 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3471364B2B990930009AB1F1 /* IntExtensions.swift */; };
 		3471364E2B990C79009AB1F1 /* SignUpErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3471364D2B990C79009AB1F1 /* SignUpErrorResponse.swift */; };
 		347136502B9913BA009AB1F1 /* ProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3471364F2B9913BA009AB1F1 /* ProfileRequest.swift */; };
+		348677432B9B95830021BC96 /* HabitValueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348677422B9B95830021BC96 /* HabitValueResponse.swift */; };
 		348BEB4E2B965C9F007DDF7A /* HabitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB4D2B965C9F007DDF7A /* HabitResponse.swift */; };
 		348BEB512B965DDF007DDF7A /* HabitRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB502B965DDF007DDF7A /* HabitRemoteDataSource.swift */; };
 		348BEB532B965FE9007DDF7A /* HabitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB522B965FE9007DDF7A /* HabitInteractor.swift */; };
@@ -153,6 +154,7 @@
 		3471364B2B990930009AB1F1 /* IntExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensions.swift; sourceTree = "<group>"; };
 		3471364D2B990C79009AB1F1 /* SignUpErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpErrorResponse.swift; sourceTree = "<group>"; };
 		3471364F2B9913BA009AB1F1 /* ProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRequest.swift; sourceTree = "<group>"; };
+		348677422B9B95830021BC96 /* HabitValueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitValueResponse.swift; sourceTree = "<group>"; };
 		348BEB4D2B965C9F007DDF7A /* HabitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitResponse.swift; sourceTree = "<group>"; };
 		348BEB502B965DDF007DDF7A /* HabitRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRemoteDataSource.swift; sourceTree = "<group>"; };
 		348BEB522B965FE9007DDF7A /* HabitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitInteractor.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				340E90002B9A4E67001C58BD /* ChartsUiState.swift */,
+				348677422B9B95830021BC96 /* HabitValueResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				344FDD8D2AF04F5D00AEA99D /* HomeViewModel.swift in Sources */,
 				3414D6CD2AD49CC300144C0F /* SignInView.swift in Sources */,
 				340E90072B9A6061001C58BD /* ChartsViewModel.swift in Sources */,
+				348677432B9B95830021BC96 /* HabitValueResponse.swift in Sources */,
 				340E8FFF2B9A4E07001C58BD /* ChartsRemoteDataSource.swift in Sources */,
 				344FDD9D2AF0593E00AEA99D /* SignUpView.swift in Sources */,
 				3493E6032B87D26800DDBA7F /* LocalDataSource.swift in Sources */,

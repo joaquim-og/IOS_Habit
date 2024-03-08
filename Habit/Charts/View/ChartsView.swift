@@ -12,12 +12,57 @@ struct ChartsView: View {
     @ObservedObject var viewModel: ChartsViewModel
     
     var body: some View {
-        VStack {
-            BoxChartView(
-                chartEntries: $viewModel.entries,
-                dates: $viewModel.dates
-            )
-            .frame(maxWidth: .infinity, maxHeight: 350)
+        ZStack {
+            
+            if case ChartsUiState.loading = viewModel.uiState {
+                progressView
+            } else {
+                VStack {
+                    if case ChartsUiState.emptyChart = viewModel.uiState {
+                        emptyListView
+                    } else if case ChartsUiState.error(let msg) = viewModel.uiState {
+                        Text("")
+                            .alert(
+                                isPresented: .constant(true),
+                                content: {
+                                    Alert(
+                                        title: Text("Ops \(msg)"),
+                                        message: Text("Tentar novamente?"),
+                                        primaryButton: .default(Text("Sim")) {
+                                            viewModel.onAppear()
+                                        },
+                                        secondaryButton: .cancel()
+                                    )
+                                }
+                            )
+                    } else {
+                        BoxChartView(
+                            chartEntries: $viewModel.entries,
+                            dates: $viewModel.dates
+                        )
+                        .frame(maxWidth: .infinity, maxHeight: 350)
+                    }
+                }
+            }
+        }.onAppear(perform: viewModel.onAppear)
+    }
+}
+
+extension ChartsView {
+    var progressView: some View {
+        ProgressView()
+    }
+}
+
+extension ChartsView {
+    var emptyListView: some View {
+        VStack{
+            Image(systemName: "exclamationmark.octagon.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 24, height: 24, alignment: .center)
+            
+            Text("Nenhum Hábito encontrado 🫨")
         }
     }
 }

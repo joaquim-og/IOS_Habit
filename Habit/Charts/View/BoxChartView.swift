@@ -109,7 +109,7 @@ class DateAxesValueFormatter: IndexAxisValueFormatter {
         let position = Int(value)
         
         if position > 0 && position < dates.count {
-            let dateFormatter = getDateFormatter(pattern: Date.DatesPatterns.YYYYMMDD)
+            let dateFormatter = getDateFormatter(pattern: Date.DatesPatterns.YYYYMMDDTHHMMSS)
             
             let date = dateFormatter.date(from: dates[position])
             

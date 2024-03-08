@@ -9,8 +9,7 @@ import Foundation
 
 enum ChartsUiState: Equatable {
     case loading
-    case none
-    case success
+    case emptyChart
+    case fullChart
     case error(String)
-    case updateLoading
 }
