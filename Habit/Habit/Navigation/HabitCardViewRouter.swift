@@ -38,5 +38,4 @@ enum HabitCardViewRouter {
         
         return ChartsView(viewModel: viewModel)
     }
-    
 }

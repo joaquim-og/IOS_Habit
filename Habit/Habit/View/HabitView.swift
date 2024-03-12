@@ -116,8 +116,8 @@ extension HabitView {
     var addButton: some View {
         NavigationLink(
             destination:
-                Text("Tela de adicionar")
-                .frame(maxWidth: .infinity, maxHeight: .infinity), 
+                viewModel.habitCreateView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity),
             label: {
                 Label("Criar Hábito", systemImage: "plus.app")
                     .modifier(ButtonStyle())
