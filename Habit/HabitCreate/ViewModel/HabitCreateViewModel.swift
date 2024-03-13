@@ -15,6 +15,8 @@ class HabitCreateViewModel: ObservableObject {
     @Published var uiState: HabitsCreateUiState = .loading
     @Published var name: String = ""
     @Published var label: String = ""
+    @Published var image: Image? = Image(systemName: "camera.fill")
+    @Published var imageData: Data? = nil
             
     private let interactor: HabitsCreateInteractor
     private var habitCreateCancellable: AnyCancellable?

@@ -39,7 +39,7 @@ extension HabitCreateView {
                 },
                 label: {
                     VStack {
-                        Image(systemName: "camera.fill")
+                        viewModel.image!
                             .resizable()
                             .scaledToFit()
                             .frame(width: 100, height: 100)
@@ -49,7 +49,19 @@ extension HabitCreateView {
                             .foregroundColor(Color.orange)
                     }
                 }
-            ).padding(.bottom, 12)
+            )
+            .padding(.bottom, 12)
+            .sheet(
+                isPresented: $shouldPresentCamera,
+                content: {
+                    ImagePickerView(
+                        image: self.$viewModel.image,
+                        imageData: self.$viewModel.imageData,
+                        isPresented: $shouldPresentCamera,
+                        sourceType: .photoLibrary
+                    )
+                }
+            )
         }
     }
 }
