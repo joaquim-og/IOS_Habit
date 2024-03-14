@@ -50,4 +50,14 @@ extension String {
         return nil
     }
     
+    func replaceChars() -> String {
+        return self
+            .replacingOccurrences(of: ".", with: "")
+            .replacingOccurrences(of: "-", with: "")
+            .replacingOccurrences(of: "(", with: "")
+            .replacingOccurrences(of: ")", with: "")
+            .replacingOccurrences(of: "/", with: "")
+            .replacingOccurrences(of: "*", with: "")
+            .replacingOccurrences(of: " ", with: "")
+    }
 }

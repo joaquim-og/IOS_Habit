@@ -23,7 +23,7 @@ class Mask {
         value: String,
         text: inout String
     ) {
-        let rawString = replaceChars(fullString: value)
+        let rawString = value.replaceChars()
         
         var _mask = mask.rawValue
         if (_mask == MaskPattern.phone.rawValue) {
@@ -71,16 +71,4 @@ class Mask {
         
         text = newValueWithMask
     }
-    
-    private static func replaceChars(fullString: String) -> String {
-        return fullString
-            .replacingOccurrences(of: ".", with: "")
-            .replacingOccurrences(of: "-", with: "")
-            .replacingOccurrences(of: "(", with: "")
-            .replacingOccurrences(of: ")", with: "")
-            .replacingOccurrences(of: "/", with: "")
-            .replacingOccurrences(of: "*", with: "")
-            .replacingOccurrences(of: " ", with: "")
-    }
-    
 }
