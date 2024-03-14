@@ -102,14 +102,14 @@ extension HabitCreateView {
                 action: {
                     viewModel.saveNewHabit()
                 },
-                buttonText: "Salvar",
+                buttonText: "Save",
                 showProgress: self.viewModel.uiState == .loading,
                 disabled: self.viewModel.name.isEmpty || self.viewModel.label.isEmpty
             )
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             
-            Button("Cancelar") {
+            Button("Cancel") {
                 self.presentationMode.wrappedValue.dismiss()
             }
             .modifier(ButtonStyle())

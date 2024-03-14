@@ -60,7 +60,7 @@ class HabitDetailsViewModel: ObservableObject {
                 self.setSuccessState()
                 self.sendPublishserState(state: true)
             } else {
-                self.setErrorState(errorMessage: "Não foi possível salvar agora, tente novamente mais tarde")
+                self.setErrorState(errorMessage: "Could not save now, please try again later.")
                 self.sendPublishserState(state: false)
             }
         }

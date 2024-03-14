@@ -84,8 +84,8 @@ struct ProfileView: View {
                         content: {
                             Alert(
                                 title: Text("Ops \(msg)"),
-                                message: Text("Tentar novamente?"),
-                                primaryButton: .default(Text("Sim")) {
+                                message: Text("Try again?"),
+                                primaryButton: .default(Text("Yes")) {
                                     viewModel.getUserProfileData()
                                 },
                                 secondaryButton: .cancel()
@@ -101,8 +101,8 @@ struct ProfileView: View {
                         content: {
                             Alert(
                                 title: Text("Ops \(msg)"),
-                                message: Text("Tentar novamente?"),
-                                primaryButton: .default(Text("Sim")) {
+                                message: Text("Try again?"),
+                                primaryButton: .default(Text("Yes")) {
                                     viewModel.updateUserProfileData()
                                 },
                                 secondaryButton: .cancel()
@@ -186,7 +186,7 @@ extension ProfileView {
 extension ProfileView {
     var userDOBField: some View {
         HStack {
-            DatePicker("Birth Day",
+            DatePicker("DOB",
                        selection: $viewModel.userBirthday,
                        displayedComponents: .date
             )

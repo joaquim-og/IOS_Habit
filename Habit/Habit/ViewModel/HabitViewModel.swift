@@ -71,8 +71,8 @@ class HabitViewModel: ObservableObject {
     private func mapHabitResponseList(responseList: [HabitResponse]) -> [HabitCardViewModel] {
         return responseList.map {
             var stateColor = Color.green
-            self.title = "Muito bom!"
-            self.headline = "Seus hábitos estão em dia"
+            self.title = "Nice!"
+            self.headline = "Your habits are on track"
             self.description = ""
             
             let lastDate = $0.lastDate?.formatStringToDate(
@@ -81,9 +81,9 @@ class HabitViewModel: ObservableObject {
             
             if lastDate < Date() {
                 stateColor = Color.red
-                self.title = "Atenção"
-                self.headline = "Fique Ligado"
-                self.description = "Você está atrasado nos hábitos"
+                self.title = "Attention"
+                self.headline = "Stay Aware"
+                self.description = "You are behind on your habits"
             }
             
             return $0.mapResponseToDomain(stateColor: stateColor, habitPublisher: self.habitPublisher)

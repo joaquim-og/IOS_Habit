@@ -24,11 +24,11 @@ struct HabitDetailView: View {
                     .foregroundColor(Color.orange)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/.bold())
                 
-                Text("Unidade: \(viewModel.label)")
+                Text("Unit: \(viewModel.label)")
             }
             
             VStack {
-                TextField("Escreva aqui o valor conquistado", text: $viewModel.value)
+                TextField("Tap here the value", text: $viewModel.value)
                     .multilineTextAlignment(.center)
                     .textFieldStyle(PlainTextFieldStyle())
                     .keyboardType(.numberPad)
@@ -38,19 +38,19 @@ struct HabitDetailView: View {
                     .background(Color.gray)
             }.padding(.horizontal, 32)
             
-            Text("Os registros devem ser feitos em até 24h.\nHábitos se constroem todos os dias :)")
+            Text("Records must be made within 24 hours.\nHabits are built every day :)")
             
             HabitLoadingButtonView(
                 action: {
                     viewModel.saveHabitValue()
                 },
-                buttonText: "Salvar",
+                buttonText: "Save",
                 showProgress: self.viewModel.uiState == .loading,
                 disabled: self.viewModel.value.isEmpty)
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             
-            Button("Cancelar") {
+            Button("Cancel") {
                 self.presentationMode.wrappedValue.dismiss()
             }
             .modifier(ButtonStyle())

@@ -12,10 +12,12 @@ struct HabitEditTextView: View {
     @Binding var text: String
     
     var placeHolder: String = ""
+    var mask: Mask.MaskPattern? = nil
     var error: String? = nil
     var failure: Bool? = nil
     var borderColor: Color = Color.orange
     var keyboard: UIKeyboardType = .default
+    var autocapitalization: UITextAutocapitalizationType = .none
     
     var body: some View {
         VStack{
@@ -25,6 +27,12 @@ struct HabitEditTextView: View {
             )
             .keyboardType(keyboard)
             .textFieldStyle(CustomTextFieldStyle())
+            .onChange(of: text) { value in
+                if let mask = mask {
+                    Mask.mask(mask: mask, value: value, text: &text)
+                }
+            }
+            .autocapitalization(autocapitalization)
             .overlay(
                 RoundedRectangle(cornerRadius: 8.0)
                     .stroke(borderColor, lineWidth: 0.8)
@@ -43,7 +51,7 @@ struct HabitEditTextViewPreviews: PreviewProvider {
         ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
             VStack {
                 HabitEditTextView(
-                    text: .constant("XABLAUEIXON"), 
+                    text: .constant("XABLAUEIXON"),
                     placeHolder: "Xablau placeholder",
                     error: "Xablau error",
                     failure: "2@2.com".count < 3

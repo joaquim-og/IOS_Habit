@@ -50,7 +50,7 @@ struct SignUpView: View {
 
 extension SignUpView {
     var headerView: some View {
-        HabitTextTitleView(text: "Cadastro")
+        HabitTextTitleView(text: "Sign Up")
     }
 }
 
@@ -58,10 +58,11 @@ extension SignUpView {
     var fullNameField: some View {
         HabitEditTextView(
             text: $viewModel.fullName,
-            placeHolder: "Nome Completo",
-            error: "Nome invalido",
+            placeHolder: "Complete Name",
+            error: "Invalid Name",
             failure: !viewModel.fullName.isTextValidLenght(minLenght: 5),
-            keyboard: .numbersAndPunctuation
+            keyboard: .numbersAndPunctuation,
+            autocapitalization: .words
         )
     }
 }
@@ -71,7 +72,7 @@ extension SignUpView {
         HabitEditTextView(
             text: $viewModel.email,
             placeHolder: "E-mail",
-            error: "E-mail invalido",
+            error: "Invalid E-mail",
             failure: !viewModel.email.isEmail(),
             keyboard: .emailAddress
         )
@@ -83,7 +84,7 @@ extension SignUpView {
         HabitSecureEditTextView(
             text: $viewModel.password,
             placeHolder: "Password",
-            error: "Password deve conter 5 caracteres no minimo",
+            error: "Password must have at leas 5 characters",
             failure: !viewModel.password.isTextValidLenght(minLenght: 5)
         )
     }
@@ -93,8 +94,9 @@ extension SignUpView {
     var documentField: some View {
         HabitEditTextView(
             text: $viewModel.document,
-            placeHolder: "Documento",
-            error: "Documento invalido",
+            placeHolder: "Document",
+            mask: Mask.MaskPattern.brazilianCpf,
+            error: "Invalid document",
             failure: !viewModel.document.isTextValidLenght(minLenght: 5),
             keyboard: .numbersAndPunctuation
         )
@@ -105,8 +107,9 @@ extension SignUpView {
     var phoneField: some View {
         HabitEditTextView(
             text: $viewModel.phone,
-            placeHolder: "Telefone",
-            error: "Telefone invalido",
+            placeHolder: "Phone",
+            mask: Mask.MaskPattern.phone,
+            error: "Invalid phone",
             failure: !viewModel.phone.isTextValidLenght(minLenght: 5),
             keyboard: .phonePad
         )
@@ -115,7 +118,7 @@ extension SignUpView {
 
 extension SignUpView {
     var birthdayField: some View {
-        DatePicker("Data de nascimento",
+        DatePicker("DOB",
                    selection: $viewModel.birthday,
                    displayedComponents: .date
         )
@@ -144,7 +147,7 @@ extension SignUpView {
             action: {
                 viewModel.signUp()
             },
-            buttonText: "Realizar o seu cadastro",
+            buttonText: "SignUp",
             showProgress: !viewModel.email.isEmail() || 
             !viewModel.password.isTextValidLenght(minLenght: 5) ||
             !viewModel.document.isTextValidLenght(minLenght: 5) ||

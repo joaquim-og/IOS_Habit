@@ -81,6 +81,7 @@
 		348BEB652B9674AF007DDF7A /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB642B9674AF007DDF7A /* HabitDetailView.swift */; };
 		348DECDF2BA37CB4003C3261 /* HabitCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348DECDE2BA37CB4003C3261 /* HabitCreateRequest.swift */; };
 		348DECE32BA38741003C3261 /* NSMutableDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348DECE22BA38741003C3261 /* NSMutableDataExtensions.swift */; };
+		348DECE62BA39625003C3261 /* Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348DECE52BA39625003C3261 /* Mask.swift */; };
 		3493E5FD2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E5FC2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift */; };
 		3493E5FF2B87D13700DDBA7F /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E5FE2B87D13700DDBA7F /* UserAuth.swift */; };
 		3493E6032B87D26800DDBA7F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E6022B87D26800DDBA7F /* LocalDataSource.swift */; };
@@ -175,6 +176,7 @@
 		348BEB642B9674AF007DDF7A /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
 		348DECDE2BA37CB4003C3261 /* HabitCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateRequest.swift; sourceTree = "<group>"; };
 		348DECE22BA38741003C3261 /* NSMutableDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableDataExtensions.swift; sourceTree = "<group>"; };
+		348DECE52BA39625003C3261 /* Mask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mask.swift; sourceTree = "<group>"; };
 		3493E5FC2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRemoteDataSource.swift; sourceTree = "<group>"; };
 		3493E5FE2B87D13700DDBA7F /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		3493E6022B87D26800DDBA7F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 		344FDD8F2AF0501F00AEA99D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				348DECE42BA39612003C3261 /* Util */,
 				3493E6012B87D22000DDBA7F /* DataSource */,
 				346F006A2B7EA6F10064448A /* Extensions */,
 				34298C332B7E1B2F00821A1B /* Style */,
@@ -687,6 +690,14 @@
 				348BEB602B9673AE007DDF7A /* HabitDetailInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		348DECE42BA39612003C3261 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				348DECE52BA39625003C3261 /* Mask.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		3493E6002B87D1FF00DDBA7F /* Local */ = {
@@ -984,6 +995,7 @@
 				343685182AF04705003414EF /* SignInUiState.swift in Sources */,
 				340E8FFD2B9A4DE9001C58BD /* ChartsInteractor.swift in Sources */,
 				34C2E4442BA0FE6A00431A8B /* HabitsCreateInteractor.swift in Sources */,
+				348DECE62BA39625003C3261 /* Mask.swift in Sources */,
 				3493E5FF2B87D13700DDBA7F /* UserAuth.swift in Sources */,
 				3427C8082B8921670089A37F /* RefreshRequest.swift in Sources */,
 				3414D6D12AD49DA600144C0F /* SplashViewRouter.swift in Sources */,
