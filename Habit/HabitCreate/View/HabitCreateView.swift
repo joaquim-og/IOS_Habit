@@ -100,7 +100,7 @@ extension HabitCreateView {
         VStack {
             HabitLoadingButtonView(
                 action: {
-                    //              viewModel.saveHabitValue()
+                    viewModel.saveNewHabit()
                 },
                 buttonText: "Salvar",
                 showProgress: self.viewModel.uiState == .loading,

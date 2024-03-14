@@ -12,7 +12,7 @@ import SwiftUI
 class HabitCreateViewModel: ObservableObject {
     
     
-    @Published var uiState: HabitsCreateUiState = .loading
+    @Published var uiState: HabitsCreateUiState = .none
     @Published var name: String = ""
     @Published var label: String = ""
     @Published var image: Image? = Image(systemName: "camera.fill")
@@ -31,29 +31,22 @@ class HabitCreateViewModel: ObservableObject {
         habitCreateCancellable?.cancel()
     }
     
-    func onAppear() {
+    func saveNewHabit() {
         setLoadingState()
-//        habitCancellable = interactor.fetchHabits()
-//            .receive(on: DispatchQueue.main)
-//            .sink { onComplete in
-//                switch (onComplete) {
-//                case .failure(let appError):
-//                    self.setErrorState(errorMessage: appError.message)
-//                    break
-//                case .finished:
-//                    break
-//                }
-//            } receiveValue: { successResponse in
-//                if successResponse.isEmpty {
-//                    self.setFullListState(modelList: [])
-//                    
-//                    self.title = ""
-//                    self.headline = "Fique ligado!"
-//                    self.description = "Você ainda nào possui hábitos"
-//                } else {
-//                    self.setFullListState(modelList: self.mapHabitResponseList(responseList: successResponse))
-//                }
-//            }
+        habitCreateCancellable = interactor.save(request: HabitCreateRequest(imageData: imageData, name: name, label: label))
+            .receive(on: DispatchQueue.main)
+            .sink { onComplete in
+                switch (onComplete) {
+                case .failure(let appError):
+                    self.setErrorState(errorMessage: appError.message)
+                    break
+                case .finished:
+                    break
+                }
+            } receiveValue: { _ in
+                self.setSuccessState()
+                self.habitCreatePublisher?.send(true)
+            }
     }
     
     private func setLoadingState() {

@@ -90,7 +90,7 @@ extension SignInView {
                 viewModel.login()
             },
             buttonText: "Entrar",
-            showProgress: !viewModel.email.isEmail() || !viewModel.password.isTextValidLenght(minLenght: 5),
+            showProgress: self.viewModel.uiState == SignInUiState.loading,
             disabled: self.viewModel.uiState == SignInUiState.loading
         )
     }

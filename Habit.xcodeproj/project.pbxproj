@@ -79,6 +79,8 @@
 		348BEB612B9673AE007DDF7A /* HabitDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB602B9673AE007DDF7A /* HabitDetailInteractor.swift */; };
 		348BEB632B9673DE007DDF7A /* HabitDetailRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB622B9673DE007DDF7A /* HabitDetailRemoteDataSource.swift */; };
 		348BEB652B9674AF007DDF7A /* HabitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348BEB642B9674AF007DDF7A /* HabitDetailView.swift */; };
+		348DECDF2BA37CB4003C3261 /* HabitCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348DECDE2BA37CB4003C3261 /* HabitCreateRequest.swift */; };
+		348DECE32BA38741003C3261 /* NSMutableDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348DECE22BA38741003C3261 /* NSMutableDataExtensions.swift */; };
 		3493E5FD2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E5FC2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift */; };
 		3493E5FF2B87D13700DDBA7F /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E5FE2B87D13700DDBA7F /* UserAuth.swift */; };
 		3493E6032B87D26800DDBA7F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3493E6022B87D26800DDBA7F /* LocalDataSource.swift */; };
@@ -171,6 +173,8 @@
 		348BEB602B9673AE007DDF7A /* HabitDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailInteractor.swift; sourceTree = "<group>"; };
 		348BEB622B9673DE007DDF7A /* HabitDetailRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailRemoteDataSource.swift; sourceTree = "<group>"; };
 		348BEB642B9674AF007DDF7A /* HabitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailView.swift; sourceTree = "<group>"; };
+		348DECDE2BA37CB4003C3261 /* HabitCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCreateRequest.swift; sourceTree = "<group>"; };
+		348DECE22BA38741003C3261 /* NSMutableDataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableDataExtensions.swift; sourceTree = "<group>"; };
 		3493E5FC2B87CB7500DDBA7F /* SignUpRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRemoteDataSource.swift; sourceTree = "<group>"; };
 		3493E5FE2B87D13700DDBA7F /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		3493E6022B87D26800DDBA7F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
@@ -628,6 +632,7 @@
 				34A109692B7FF4AB003E2490 /* DateExtensions.swift */,
 				348BEB542B9662F3007DDF7A /* HabitResponseMapper.swift */,
 				3471364B2B990930009AB1F1 /* IntExtensions.swift */,
+				348DECE22BA38741003C3261 /* NSMutableDataExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -748,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				34C2E43F2BA0FD8300431A8B /* HabitCreateUiState.swift */,
+				348DECDE2BA37CB4003C3261 /* HabitCreateRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -922,6 +928,7 @@
 				348BEB532B965FE9007DDF7A /* HabitInteractor.swift in Sources */,
 				340E90092B9A61CF001C58BD /* BoxChartView.swift in Sources */,
 				3431445929CBAD3500AA31D5 /* HabitApp.swift in Sources */,
+				348DECDF2BA37CB4003C3261 /* HabitCreateRequest.swift in Sources */,
 				346F00712B7EA9160064448A /* HabitLoadingButtonView.swift in Sources */,
 				340AFC8B2B97AE3200873C90 /* HabitDetailsValueRequest.swift in Sources */,
 				34298C302B7D545B00821A1B /* HabitErrorAlert.swift in Sources */,
@@ -953,6 +960,7 @@
 				346AF1142B853BFF00AEFA42 /* ErrorResponse.swift in Sources */,
 				340E90012B9A4E67001C58BD /* ChartsUiState.swift in Sources */,
 				340AFC962B97CC6B00873C90 /* ProfileInteractor.swift in Sources */,
+				348DECE32BA38741003C3261 /* NSMutableDataExtensions.swift in Sources */,
 				343659042B8685320022FD96 /* SignInInteractor.swift in Sources */,
 				340AFC8D2B97C4DA00873C90 /* HabitImageView.swift in Sources */,
 				344FDD8D2AF04F5D00AEA99D /* HomeViewModel.swift in Sources */,

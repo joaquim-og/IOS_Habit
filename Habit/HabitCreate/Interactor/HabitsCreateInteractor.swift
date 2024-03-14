@@ -13,9 +13,10 @@ class HabitsCreateInteractor {
     private let localDataSource: LocalDataSource = LocalDataSource.sharedLocalDataSource
 }
 
-extension HabitInteractor {
+extension HabitsCreateInteractor {
     
-//    func fetchHabits() -> Future<[HabitResponse], AppError> {
-//        return remoteDataSource.fetchHabits()
-//    }
+    func save(request: HabitCreateRequest) -> Future<Void, AppError> {
+        return remoteDataSource.save(request: request)
+    }
+    
 }

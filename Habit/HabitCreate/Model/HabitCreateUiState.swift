@@ -9,6 +9,7 @@ import Foundation
 
 enum HabitsCreateUiState: Equatable {
     case loading
+    case none
     case success
     case error(String)
 }
