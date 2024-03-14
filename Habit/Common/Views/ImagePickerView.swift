@@ -63,8 +63,15 @@ class ImagePickerViewCoordinator: NSObject, UIImagePickerControllerDelegate, UIN
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.image = Image(uiImage: image)
-            self.imageData = image.jpegData(compressionQuality: 0.5)
+            let width: CGFloat = 420.0
+            let canvas = CGSize(width: width, height: CGFloat(ceil(width / image.size.width * image.size.height)))
+            
+            let imgResized = UIGraphicsImageRenderer(size: canvas, format: image.imageRendererFormat).image { _ in
+                image.draw(in: CGRect(origin: .zero, size: canvas))
+            }
+            
+            self.image = Image(uiImage: imgResized)
+            self.imageData = imgResized.jpegData(compressionQuality: 0.2)
         }
         
         self.isPresented = false
@@ -79,7 +86,7 @@ struct ImagePickerView_Previews: PreviewProvider {
     @State static var image: Image? = nil
     @State static var imageData: Data? = nil
     @State static var isPresented = true
-
+    
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) {
             ImagePickerView(
