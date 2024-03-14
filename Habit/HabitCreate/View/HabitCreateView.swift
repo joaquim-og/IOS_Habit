@@ -58,7 +58,7 @@ extension HabitCreateView {
                         image: self.$viewModel.image,
                         imageData: self.$viewModel.imageData,
                         isPresented: $shouldPresentCamera,
-                        sourceType: .photoLibrary
+                        sourceType: .camera
                     )
                 }
             )

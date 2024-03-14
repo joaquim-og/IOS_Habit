@@ -14,13 +14,18 @@ class SignInViewModel: ObservableObject {
     private var requestCancellable: AnyCancellable?
     private let signInPublisher = PassthroughSubject<Bool, Never>()
     private let interactor: SignInInteractor
+    private let homeViewModel: HomeViewModel
     
     @Published var uiState: SignInUiState = .none
     @Published var email = ""
     @Published var password = ""
     
-    init(interactor: SignInInteractor) {
+    init(
+        interactor: SignInInteractor,
+        homeViewModel: HomeViewModel
+    ) {
         self.interactor = interactor
+        self.homeViewModel = homeViewModel
         
         signInCancellable = signInPublisher.sink { isRegisterSuccessful in
             if (isRegisterSuccessful) {
@@ -87,7 +92,7 @@ class SignInViewModel: ObservableObject {
 // MARK: - Navigation Routers
 extension SignInViewModel {
     func navigateToHomeView() -> some View {
-        return SignInViewRouter.navigateToHomeViewFromSignIn()
+        return SignInViewRouter.navigateToHomeViewFromSignIn(homeViewModel: homeViewModel)
     }
     
     func navigateToSignUpView() -> some View {
