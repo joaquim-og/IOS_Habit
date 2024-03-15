@@ -1,4 +1,5 @@
-### 🏗️ Habit project built on [IOS Developer Course]([https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white](https://tiagoaguiar.co/ios-developer?utm_origin=cursos-tab)https://tiagoaguiar.co/ios-developer?utm_origin=cursos-tab) </br></br>
+### 🏗️ Habit project built on [IOS Developer Course](https://tiagoaguiar.co/ios-developer?utm_origin=cursos-tab) </br></br>
+
 
 This is an iOS app that helps users track their habits 🗓️. Users can create and edit their profiles 🧑‍💻, add habits 🏃‍♀️🎸📚, and track their progress over time 📈. The app also provides graphs and charts to help users visualize their progress 📊.
 
