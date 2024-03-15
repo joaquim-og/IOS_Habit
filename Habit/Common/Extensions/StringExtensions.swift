@@ -37,4 +37,27 @@ extension String {
         return dateFormatter.date(from: self)
     }
     
+    func characterAtindex(index: Int) -> Character? {
+        var occurrence = 0
+                
+        for char in self {
+            if occurrence == index {
+                return char
+            }
+            occurrence += 1
+        }
+        
+        return nil
+    }
+    
+    func replaceChars() -> String {
+        return self
+            .replacingOccurrences(of: ".", with: "")
+            .replacingOccurrences(of: "-", with: "")
+            .replacingOccurrences(of: "(", with: "")
+            .replacingOccurrences(of: ")", with: "")
+            .replacingOccurrences(of: "/", with: "")
+            .replacingOccurrences(of: "*", with: "")
+            .replacingOccurrences(of: " ", with: "")
+    }
 }

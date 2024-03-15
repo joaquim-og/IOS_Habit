@@ -84,7 +84,7 @@ struct HabitCardView: View {
                                         alignment: .leading,
                                         spacing: 4,
                                         content: {
-                                            Text("Registrado")
+                                            Text("Registered")
                                                 .foregroundColor(Color.orange)
                                                 .bold()
                                                 .multilineTextAlignment(.leading)

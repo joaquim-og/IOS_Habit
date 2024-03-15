@@ -48,8 +48,8 @@ struct HabitView: View {
                                             content: {
                                                 Alert(
                                                     title: Text("Ops \(msg)"),
-                                                    message: Text("Tentar novamente?"),
-                                                    primaryButton: .default(Text("Sim")) {
+                                                    message: Text("Try again?"),
+                                                    primaryButton: .default(Text("Yes")) {
                                                         viewModel.onAppear()
                                                     },
                                                     secondaryButton: .cancel()
@@ -108,7 +108,7 @@ extension HabitView {
         )
         .padding(.horizontal, 16)
         .padding(.top, 16)
-        .navigationTitle("Meus Hábitos")
+        .navigationTitle("Add Habit")
     }
 }
 
@@ -116,10 +116,10 @@ extension HabitView {
     var addButton: some View {
         NavigationLink(
             destination:
-                Text("Tela de adicionar")
-                .frame(maxWidth: .infinity, maxHeight: .infinity), 
+                viewModel.habitCreateView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity),
             label: {
-                Label("Criar Hábito", systemImage: "plus.app")
+                Label("Add Habit", systemImage: "plus.app")
                     .modifier(ButtonStyle())
             }
         )
@@ -135,7 +135,7 @@ extension HabitView {
                 .scaledToFit()
                 .frame(width: 24, height: 24, alignment: .center)
             
-            Text("Nenhum Hábito encontrado 🫨")
+            Text("You don't have any Habits 🫨")
         }
     }
 }

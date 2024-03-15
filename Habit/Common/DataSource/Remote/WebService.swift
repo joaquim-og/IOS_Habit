@@ -29,6 +29,7 @@ enum WebService {
     enum ContentType: String {
         case json = "application/json"
         case formUrl = "application/x-www-form-urlencoded"
+        case multipart = "multipart/form-data"
     }
     
     enum NetworkError {
@@ -51,12 +52,13 @@ enum WebService {
     static func buildPathString(path: Endpoint, idToUpdate: Int) -> String {
         return String(format: path.rawValue, idToUpdate)
     }
-        
+    
     private static func callApi(
         path: String,
         contentType: ContentType,
         method: RequestType,
         data: Data?,
+        boundary: String = "",
         onComplete: @escaping (Result) -> Void
     ) {
         
@@ -70,11 +72,16 @@ enum WebService {
                     urlRequest.setValue("\(user.tokenType) \(user.idToken)", forHTTPHeaderField: "Authorization")
                 }
                 
+                if (contentType == ContentType.multipart) {
+                    urlRequest.setValue("\(ContentType.multipart.rawValue); boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+                } else {
+                    urlRequest.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
+                }
+                
                 urlRequest.httpMethod = method.rawValue
                 urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: "accept")
-                urlRequest.setValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
                 urlRequest.httpBody = data
-                       
+                
                 let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
                     guard let data = data, error == nil else {
                         onComplete(.failure(.internalServerError, nil))
@@ -91,6 +98,10 @@ enum WebService {
                             break
                         case 200:
                             onComplete(.success(data))
+                            break
+                        case 201:
+                            onComplete(.success(data))
+                            break
                         default:
                             break
                         }
@@ -108,7 +119,7 @@ enum WebService {
         onComplete: @escaping (Result) -> Void
     ) {
         guard let jsonData = try? JSONEncoder().encode(body) else {return}
-              
+        
         if let pathEnum = pathEnum {
             callApi(path: pathEnum.rawValue, contentType: ContentType.json, method: method, data: jsonData, onComplete: onComplete)
         }
@@ -137,6 +148,7 @@ enum WebService {
         path: Endpoint,
         method: RequestType,
         params: [URLQueryItem],
+        data: Data? = nil,
         onComplete: @escaping (Result) -> Void
     ) {
         guard let urlRequest = buildEndpointUrl(path: path.rawValue) else {
@@ -148,7 +160,49 @@ enum WebService {
         }
         var components = URLComponents(string: absoluteUrl)
         components?.queryItems = params
-               
-        callApi(path: path.rawValue, contentType: ContentType.formUrl, method: method, data: components?.query?.data(using: .utf8), onComplete: onComplete)
+        
+        let boundary = "Boundary-\(NSUUID().uuidString)"
+        
+        callApi(
+            path: path.rawValue,
+            contentType: data != nil ? ContentType.multipart : ContentType.formUrl,
+            method: method,
+            data: data != nil ? createBodyWithParameters(
+                params: params,
+                data: data!,
+                boundary: boundary
+            ) : components?.query?.data(using: .utf8),
+            boundary: boundary,
+            onComplete: onComplete
+        )
+    }
+    
+    private static func createBodyWithParameters(
+        params: [URLQueryItem],
+        data: Data,
+        boundary: String
+    ) -> Data {
+        let body = NSMutableData()
+        
+        // adding params
+        params.forEach { param in
+            body.appendString("--\(boundary)\r\n")
+            body.appendString("Content-Disposition: form-data; name=\"\(param.name)\"\r\n\r\n")
+            body.appendString("\(param.value!)\r\n")
+        }
+        
+        // adding image
+        let fileName = "img.jpg"
+        let mimeType = "image/jpeg"
+        body.appendString("--\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"file\"; filename=\"\(fileName)\"\r\n")
+        body.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        body.append(data)
+
+        // adding last element
+        body.appendString("\r\n")
+        body.appendString("--\(boundary)--\r\n")
+        
+        return body as Data
     }
 }

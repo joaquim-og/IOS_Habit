@@ -84,8 +84,8 @@ struct ProfileView: View {
                         content: {
                             Alert(
                                 title: Text("Ops \(msg)"),
-                                message: Text("Tentar novamente?"),
-                                primaryButton: .default(Text("Sim")) {
+                                message: Text("Try again?"),
+                                primaryButton: .default(Text("Yes")) {
                                     viewModel.getUserProfileData()
                                 },
                                 secondaryButton: .cancel()
@@ -101,8 +101,8 @@ struct ProfileView: View {
                         content: {
                             Alert(
                                 title: Text("Ops \(msg)"),
-                                message: Text("Tentar novamente?"),
-                                primaryButton: .default(Text("Sim")) {
+                                message: Text("Try again?"),
+                                primaryButton: .default(Text("Yes")) {
                                     viewModel.updateUserProfileData()
                                 },
                                 secondaryButton: .cancel()
@@ -158,10 +158,12 @@ extension ProfileView {
         HStack {
             Text("Document")
             Spacer()
-            TextField("", text: $viewModel.userDocument)
-                .disabled(true)
-                .foregroundColor(Color.gray)
-                .multilineTextAlignment(.trailing)
+            ProfileEditTextView(
+                text: $viewModel.userDocument,
+                mask: Mask.MaskPattern.brazilianCpf
+            )
+            .disabled(true)
+            .foregroundColor(Color.gray)
         }
     }
 }
@@ -172,9 +174,12 @@ extension ProfileView {
             HStack {
                 Text("Phone")
                 Spacer()
-                TextField("Tap your phone", text: $viewModel.userPhone)
-                    .keyboardType(.alphabet)
-                    .multilineTextAlignment(.trailing)
+                ProfileEditTextView(
+                    text: $viewModel.userPhone,
+                    placeHolder: "Tap your phone",
+                    mask: Mask.MaskPattern.phone
+                )
+                .keyboardType(.alphabet)
             }
             if (!viewModel.userPhone.isTextValidLenght(minLenght: 5)) {
                 Text("Invalid Phone").foregroundColor(.red).multilineTextAlignment(.trailing)
@@ -186,7 +191,7 @@ extension ProfileView {
 extension ProfileView {
     var userDOBField: some View {
         HStack {
-            DatePicker("Birth Day",
+            DatePicker("DOB",
                        selection: $viewModel.userBirthday,
                        displayedComponents: .date
             )

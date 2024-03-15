@@ -32,7 +32,7 @@ struct SignInView: View {
                                     spacing: 8,
                                     content: {
                                         HabitLogo()
-                                        Text("Login")
+                                        Text("SignIn")
                                             .foregroundColor(.orange)
                                             .font(Font.system(.title).bold())
                                             .padding(.bottom, 8)
@@ -52,7 +52,7 @@ struct SignInView: View {
                         )
                     }.frame(maxWidth:.infinity, maxHeight: .infinity)
                         .padding(.horizontal, 32)
-                        .navigationBarTitle("Login", displayMode: .inline)
+                        .navigationBarTitle("SignIn", displayMode: .inline)
                         .navigationBarHidden(navigationHidden)
                 }
             }
@@ -65,7 +65,7 @@ extension SignInView {
         HabitEditTextView(
             text: $viewModel.email,
             placeHolder: "E-mail",
-            error: "E-mail invalido",
+            error: "Invalid e-mail",
             failure: !viewModel.email.isEmail(),
             keyboard: .emailAddress
         )
@@ -77,7 +77,7 @@ extension SignInView {
         HabitSecureEditTextView(
             text: $viewModel.password,
             placeHolder: "Password",
-            error: "Password deve conter 5 caracteres no minimo",
+            error: "Password must have at leas 5 characters",
             failure: !viewModel.password.isTextValidLenght(minLenght: 5)
         )
     }
@@ -89,8 +89,8 @@ extension SignInView {
             action: {
                 viewModel.login()
             },
-            buttonText: "Entrar",
-            showProgress: !viewModel.email.isEmail() || !viewModel.password.isTextValidLenght(minLenght: 5),
+            buttonText: "SignIn",
+            showProgress: self.viewModel.uiState == SignInUiState.loading,
             disabled: self.viewModel.uiState == SignInUiState.loading
         )
     }
@@ -100,7 +100,7 @@ extension SignInView {
 extension SignInView {
     var registerLink: some View {
         VStack {
-            Text("Ainda não possui conta?")
+            Text("Don't have an account?")
                 .foregroundColor(.gray)
                 .padding(.top, 48)
             
@@ -112,7 +112,7 @@ extension SignInView {
                     label: { EmptyView() }
                 )
                 
-                Button("Realize seu cadastro") {
+                Button("SignUp") {
                     self.action = 1
                 }
             }
@@ -124,7 +124,7 @@ extension SignInView {
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
-            let viewModel = SignInViewModel(interactor: SignInInteractor())
+            let viewModel = SignInViewModel(interactor: SignInInteractor(), homeViewModel: HomeViewModel())
             
             SignInView(viewModel: viewModel)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

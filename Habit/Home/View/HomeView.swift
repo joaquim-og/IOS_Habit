@@ -18,13 +18,13 @@ struct HomeView: View {
             viewModel.habitView()
                 .tabItem {
                     Image(systemName: "square.grid.2x2")
-                    Text("Hábitos")
+                    Text("Habits")
                 }.tag(0)
             
             viewModel.habitForChartView()
                 .tabItem {
                     Image(systemName: "chart.bar")
-                    Text("Gráficos")
+                    Text("Graphs")
                 }.tag(1)
             
             viewModel.profileView()
@@ -35,12 +35,6 @@ struct HomeView: View {
         }
         .background(Color.white)
         .accentColor(Color.orange)
-    }
-}
-
-extension HomeView {
-    var headerView: some View {
-        Text("Xablau aqui o header")
     }
 }
 

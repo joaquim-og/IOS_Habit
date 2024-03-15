@@ -8,8 +8,8 @@
 import Foundation
 
 enum Gender: String, CaseIterable, Identifiable {
-    case male = "Masculino"
-    case female = "Feminino"
+    case male = "Male"
+    case female = "Female"
     
     var id: String {
         self.rawValue

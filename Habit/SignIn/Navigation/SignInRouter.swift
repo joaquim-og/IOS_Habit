@@ -15,6 +15,10 @@ enum SignInViewRouter {
         return HomeView(viewModel: viewModel)
     }    
     
+    static func navigateToHomeViewFromSignIn(homeViewModel: HomeViewModel) -> some View {
+        return HomeView(viewModel: homeViewModel)
+    }
+    
     static func navigateToSignUpView(publisher: PassthroughSubject<Bool, Never>) -> some View {
         let viewModel = SignUpViewModel(signUpInteractor: SignUpInteractor())
         viewModel.signUpPublisher = publisher

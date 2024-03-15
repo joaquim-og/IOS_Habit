@@ -1,21 +1,18 @@
 //
-//  EditTextView.swift
+//  ProfileEditTextView.swift
 //  Habit
 //
-//  Created by joaquim de oliveira gomes on 14/02/24.
+//  Created by joaquim de oliveira gomes on 14/03/24.
 //
 
 import SwiftUI
 
-struct HabitEditTextView: View {
+struct ProfileEditTextView: View {
     
     @Binding var text: String
     
     var placeHolder: String = ""
     var mask: Mask.MaskPattern? = nil
-    var error: String? = nil
-    var failure: Bool? = nil
-    var borderColor: Color = Color.orange
     var keyboard: UIKeyboardType = .default
     var autocapitalization: UITextAutocapitalizationType = .none
     
@@ -33,28 +30,19 @@ struct HabitEditTextView: View {
                 }
             }
             .autocapitalization(autocapitalization)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8.0)
-                    .stroke(borderColor, lineWidth: 0.8)
-            )
-            
-            if let error = error, failure == true, !text.isEmpty {
-                Text(error).foregroundColor(.red)
-            }
+            .multilineTextAlignment(.trailing)
         }
         .padding(.bottom, 10)
     }
 }
 
-struct HabitEditTextViewPreviews: PreviewProvider {
+struct ProfileEditTextViewPreviews: PreviewProvider {
     static var previews: some View {
         ForEach(ColorScheme.allCases, id: \.self) { colorScheme in
             VStack {
-                HabitEditTextView(
+                ProfileEditTextView(
                     text: .constant("XABLAUEIXON"),
-                    placeHolder: "Xablau placeholder",
-                    error: "Xablau error",
-                    failure: "2@2.com".count < 3
+                    placeHolder: "Xablau placeholder"
                 ).padding()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

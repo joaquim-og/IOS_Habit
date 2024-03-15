@@ -63,8 +63,6 @@ class ChartsViewModel: ObservableObject {
             }
     }
     
-  
-    
     private func setLoadingState() {
         DispatchQueue.main.async {
             self.uiState = .loading

@@ -27,8 +27,8 @@ struct ChartsView: View {
                                 content: {
                                     Alert(
                                         title: Text("Ops \(msg)"),
-                                        message: Text("Tentar novamente?"),
-                                        primaryButton: .default(Text("Sim")) {
+                                        message: Text("Try again?"),
+                                        primaryButton: .default(Text("Yes")) {
                                             viewModel.onAppear()
                                         },
                                         secondaryButton: .cancel()
@@ -62,7 +62,7 @@ extension ChartsView {
                 .scaledToFit()
                 .frame(width: 24, height: 24, alignment: .center)
             
-            Text("Nenhum Hábito encontrado 🫨")
+            Text("You don't have any Habits 🫨")
         }
     }
 }
