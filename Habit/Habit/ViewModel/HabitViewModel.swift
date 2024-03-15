@@ -60,8 +60,8 @@ class HabitViewModel: ObservableObject {
                     self.setFullListState(modelList: [])
                     
                     self.title = ""
-                    self.headline = "Fique ligado!"
-                    self.description = "Você ainda nào possui hábitos"
+                    self.headline = "Stay aware!"
+                    self.description = "You don't added any Habits"
                 } else {
                     self.setFullListState(modelList: self.mapHabitResponseList(responseList: successResponse))
                 }
