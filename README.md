@@ -11,6 +11,7 @@ This is an iOS app that helps users track their habits 🗓️. Users can create
 * Dg charts - Users can easily check their habit tracks
 * CocoaPods - Manage external dependency libs
 * Light/dark theme
+* MVVM / Interactor / remoteDataSource arch
 * 100% online
 
  
