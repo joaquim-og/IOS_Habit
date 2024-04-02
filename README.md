@@ -8,13 +8,13 @@ This is an iOS app that helps users track their habits 🗓️. Users can create
 * Swift UI - Modern IOS UI development
 * API requests - Create/update user, create Habits, add new Habit track
 * Image picker to select camera or local storage photos
-* Dg charts - User can easily check your habit tracks
+* Dg charts - Users can easily check their habit tracks
 * CocoaPods - Manage external dependency libs
 * Light/dark theme
 * 100% online
 
  
-## 📱 Screen shots:
+## 📱 Screenshots:
 
 | Light Theme | Dark Theme |
 |---|---|
